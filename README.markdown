@@ -1,4 +1,5 @@
-= defunkt's .emacs
+defunkt's .emacs
+================
 
 On 2008-08-17 I decided to switch from Vim to Emacs.
 
