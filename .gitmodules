@@ -1,0 +1,3 @@
+[submodule "rinari"]
+	path = rinari
+	url = git://github.com/technomancy/rinari.git
