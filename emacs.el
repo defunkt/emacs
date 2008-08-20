@@ -1,7 +1,7 @@
 ; global
 (add-to-list 'load-path "~/.emacs.d/")
 (setq-default tab-width 2)
-(setq-default indent-tabs-mode nil)
+(default indent-tabs-mode nil)
 (setq mac-emulate-three-button-mouse nil)
 (setq cua-highlight-region-shift-only t)
 (one-buffer-one-frame-mode 0) ; forces everything to open in one window
@@ -51,12 +51,14 @@
 (global-set-key (kbd "C-x C-M-f") 'find-file-in-project) ;; optional
 (setq rinari-tags-file-name "TAGS")
 
+; ruby
+(setq auto-mode-alist (cons '("Rakefile" . ruby-mode) auto-mode-alist))
+
 ; markdown
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
-(setq auto-mode-alist
-   (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
 ; git
 (add-to-list 'load-path "~/.emacs.d/git-emacs")
