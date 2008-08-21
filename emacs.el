@@ -5,7 +5,6 @@
 (setq mac-emulate-three-button-mouse nil)
 (setq cua-highlight-region-shift-only t)
 (one-buffer-one-frame-mode 0) ; forces everything to open in one window
-
 (define-key global-map [\C-tab] 'other-window) ; vimy window switching
 (define-key global-map "\C-x\C-z" 'shell) ; shortcut for shell
 
@@ -22,7 +21,6 @@
   The CHAR is replaced and the point is put before CHAR."
   (insert char)
   (forward-char -1))
-
 
 (defun my-new-frame-with-new-scratch ()
   (interactive)
@@ -71,6 +69,15 @@
 ; git
 (add-to-list 'load-path "~/.emacs.d/git-emacs")
 (require 'git-emacs)
+
+; git-push
+(defun git-push ()
+  (interactive)
+  (message "Pushing...")
+  (let ((buffer (generate-new-buffer "git-push")))
+    (call-process "/usr/local/git/bin/git-push" nil buffer nil)
+    (set-buffer buffer)
+    (message (buffer-string))))
 
 ; dired
 (require 'dired)
