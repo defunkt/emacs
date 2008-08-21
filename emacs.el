@@ -6,7 +6,10 @@
 (setq cua-highlight-region-shift-only t)
 (one-buffer-one-frame-mode 0) ; forces everything to open in one window
 
-(defun edit-my-preferencpes ()
+(define-key global-map [\C-tab] 'other-window) ; vimy window switching
+(define-key global-map "\C-x\C-z" 'shell) ; shortcut for shell
+
+(defun edit-my-preferences ()
   "Edits my local preferences."
   (interactive)
   (find-file 
@@ -39,11 +42,16 @@
                          `(define-key ,keymap ,(car kp) ,(cadr kp)))
                  keypairs)))
 
+;;;;;;;;;;;;
+;   Modes  ;
+;;;;;;;;;;;;
+
 ; colors
 (require 'color-theme)
 (color-theme-initialize)
 (setq color-theme-is-global t)
-(color-theme-dark-laptop)
+(load-file "~/.emacs.d/twilight-emacs/color-theme-twilight.el")
+(color-theme-twilight)
 
 ; rinari
 (add-to-list 'load-path "~/.emacs.d/rinari/")
@@ -74,3 +82,6 @@
     (if (file-exists-p file-name)
         (call-process "/usr/bin/open" nil 0 nil file-name))))
 (define-key dired-mode-map "o" 'dired-open-mac)
+
+; prefer dired over dumping dir list to buffer
+(define-key global-map "\C-x\C-d" 'dired)

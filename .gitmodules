@@ -7,3 +7,6 @@
 [submodule "git-emacs"]
 	path = emacs.d/git-emacs
 	url = git://github.com/tsgates/git-emacs.git
+[submodule "emacs.d/twilight-emacs"]
+	path = emacs.d/twilight-emacs
+	url = git://github.com/crafterm/twilight-emacs.git
