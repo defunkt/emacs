@@ -1,12 +1,22 @@
 ; global
 (add-to-list 'load-path "~/.emacs.d/")
 (setq-default tab-width 2)
-(default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 (setq mac-emulate-three-button-mouse nil)
 (setq cua-highlight-region-shift-only t)
 (one-buffer-one-frame-mode 0) ; forces everything to open in one window
+
+; custom keys
 (define-key global-map [\C-tab] 'other-window) ; vimy window switching
 (define-key global-map "\C-x\C-z" 'shell) ; shortcut for shell
+
+; textmate style command+space
+(defun insert-blank-line-after-current ()
+  (interactive)
+  (next-line)
+  (beginning-of-line)
+  (insert "\n"))
+(define-key global-map [A-return] 'insert-blank-line-after-current)
 
 (defun edit-my-preferences ()
   "Edits my local preferences."
@@ -75,7 +85,7 @@
   (interactive)
   (message "Pushing...")
   (let ((buffer (generate-new-buffer "git-push")))
-    (call-process "/usr/local/git/bin/git-push" nil buffer nil)
+    (call-process "/usr/local/git/bin/git" nil buffer nil "push")
     (set-buffer buffer)
     (message (buffer-string))))
 
@@ -89,6 +99,7 @@
     (if (file-exists-p file-name)
         (call-process "/usr/bin/open" nil 0 nil file-name))))
 (define-key dired-mode-map "o" 'dired-open-mac)
+(define-key dired-mode-map "-" 'dired-up-directory)
 
 ; prefer dired over dumping dir list to buffer
 (define-key global-map "\C-x\C-d" 'dired)
