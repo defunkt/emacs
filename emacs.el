@@ -1,4 +1,7 @@
-; global
+;;;;;;;;;;;;
+;  Global  ;
+;;;;;;;;;;;;
+
 (add-to-list 'load-path "~/.emacs.d/")
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
@@ -44,12 +47,6 @@
 (define-key osx-key-mode-map (kbd "A-n") 'my-new-frame-with-new-scratch)
 (define-key osx-key-mode-map (kbd "A-w") 'my-close-current-window-asktosave)
 
-(defmacro quick-key (keymap &rest keypairs)
-  "Quickly define keys for a specific KEYMAP by giving pairs, like (\"\\C-ca\" 'do-nothing-special)"
-  `(progn ,@(map 'list (lambda (kp)
-                         `(define-key ,keymap ,(car kp) ,(cadr kp)))
-                 keypairs)))
-
 ;;;;;;;;;;;;
 ;   Modes  ;
 ;;;;;;;;;;;;
@@ -81,13 +78,20 @@
 (require 'git-emacs)
 
 ; git-push
+(defun git-exec-command (command)
+  (let ((git-bin "/usr/local/git/bin/git "))
+    (shell-command-to-string (concat git-bin command))))
+
 (defun git-push ()
   (interactive)
   (message "Pushing...")
-  (let ((buffer (generate-new-buffer "git-push")))
-    (call-process "/usr/local/git/bin/git" nil buffer nil "push")
-    (set-buffer buffer)
-    (message (buffer-string))))
+  (message (git-exec-command "push")))
+
+; git-pull
+(defun git-pull ()
+  (interactive)
+  (message "Pulling...")
+  (message (git-exec-command "pull")))
 
 ; dired
 (require 'dired)
@@ -103,3 +107,6 @@
 
 ; prefer dired over dumping dir list to buffer
 (define-key global-map "\C-x\C-d" 'dired)
+
+; .bashrc should open in sh mode
+(setq auto-mode-alist (cons '("\\.bashrc" . sh-mode) auto-mode-alist))
