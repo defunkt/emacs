@@ -80,20 +80,24 @@
 ; git-push
 (defun git-exec-command (command)
   (let ((git-bin "/usr/local/git/bin/git "))
-    (shell-command-to-string (concat git-bin command))))
+    (shell-command (concat git-bin command))))
 
 (defun git-push ()
   (interactive)
   (message "Pushing...")
-  (message (git-exec-command "push")))
+  (git-exec-command "push"))
 
 ; git-pull
 (defun git-pull ()
   (interactive)
   (message "Pulling...")
-  (message (git-exec-command "pull")))
+  (git-exec-command "pull"))
 
-; dired
+; js2
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+; Dired
 (require 'dired)
 
 ; remap 'o' in dired mode to open a file
