@@ -10,12 +10,6 @@
 (one-buffer-one-frame-mode 0) ; forces everything to open in one window
 (tool-bar-mode) ; get rid of the damn toolbar
 
-; how to get the font you want:
-;   M-x mac-font-panel RET
-;   pick your font
-;   M-x describe-font
-(set-default-font "-apple-inconsolata-medium-r-normal--16-160-72-72-m-160-iso10646-1")
-
 ; custom keys
 (define-key global-map [\C-tab] 'other-window) ; vimy window switching
 (define-key global-map "\C-x\C-z" 'shell) ; shortcut for shell
@@ -64,6 +58,11 @@
 (setq color-theme-is-global t)
 (load-file "~/.emacs.d/twilight-emacs/color-theme-twilight.el")
 (color-theme-twilight)
+; how to get the font you want:
+;   M-x mac-font-panel 
+;   pick your font
+;   M-x describe-font
+(set-default-font "-apple-inconsolata-medium-r-normal--16-160-72-72-m-160-iso10646-1")
 
 ; rinari
 (add-to-list 'load-path "~/.emacs.d/rinari/")
@@ -86,14 +85,17 @@
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
 ; git
+(add-to-list 'load-path "~/.emacs.d/magit")
+(require 'magit)
+
 (add-to-list 'load-path "~/.emacs.d/git-emacs")
 (require 'git-emacs)
 
-; git-push
 (defun git-exec-command (command)
   (let ((git-bin "/usr/local/git/bin/git "))
     (shell-command (concat git-bin command))))
 
+; git-push
 (defun git-push ()
   (interactive)
   (message "Pushing...")

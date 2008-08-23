@@ -13,3 +13,9 @@
 [submodule "emacs.d/rhtml"]
 	path = emacs.d/rhtml
 	url = git://github.com/eschulte/rhtml.git
+[submodule "emacs.d/magit"]
+	path = emacs.d/magit
+	url = git://github.com/technomancy/magit.git
+[submodule "emacs.d/cheat.el"]
+	path = emacs.d/cheat.el
+	url = git://github.com/defunkt/cheat.el.git
