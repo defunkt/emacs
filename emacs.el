@@ -8,6 +8,13 @@
 (setq mac-emulate-three-button-mouse nil)
 (setq cua-highlight-region-shift-only t)
 (one-buffer-one-frame-mode 0) ; forces everything to open in one window
+(tool-bar-mode) ; get rid of the damn toolbar
+
+; how to get the font you want:
+;   M-x mac-font-panel RET
+;   pick your font
+;   M-x describe-font
+(set-default-font "-apple-inconsolata-medium-r-normal--16-160-72-72-m-160-iso10646-1")
 
 ; custom keys
 (define-key global-map [\C-tab] 'other-window) ; vimy window switching
