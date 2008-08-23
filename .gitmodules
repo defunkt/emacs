@@ -10,3 +10,6 @@
 [submodule "twilight-emacs"]
 	path = emacs.d/twilight-emacs
 	url = git://github.com/crafterm/twilight-emacs.git
+[submodule "emacs.d/rhtml"]
+	path = emacs.d/rhtml
+	url = git://github.com/eschulte/rhtml.git

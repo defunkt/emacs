@@ -64,6 +64,11 @@
 (global-set-key (kbd "C-x C-M-f") 'find-file-in-project) ;; optional
 (setq rinari-tags-file-name "TAGS")
 
+; rhtml
+(add-to-list 'load-path "~/.emacs.d/rhtml")
+(require 'rhtml-mode)
+(add-hook 'rhtml-mode-hook (lambda () (rinari-launch)))
+
 ; ruby
 (setq auto-mode-alist (cons '("Rakefile" . ruby-mode) auto-mode-alist))
 
