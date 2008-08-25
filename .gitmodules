@@ -16,3 +16,6 @@
 [submodule "emacs.d/cheat.el"]
 	path = emacs.d/cheat.el
 	url = git://github.com/defunkt/cheat.el.git
+[submodule "emacs.d/gist.el"]
+	path = emacs.d/gist.el
+	url = git@github.com:defunkt/gist.el.git

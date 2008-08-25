@@ -20,7 +20,7 @@
                (string-match "^#!.+[ /]\\(\\w+\\)$" bang)
                (match-string 1 bang)))
        (mode-fn (intern (concat mode "-mode"))))
-    (when (and mode (functionp mode-fn))
+    (when (functionp mode-fn)
       (funcall mode-fn))))
 
 (add-hook 'find-file-hook 'shebang-to-mode)
@@ -81,7 +81,7 @@
 ; rhtml
 (add-to-list 'load-path "~/.emacs.d/rhtml")
 (require 'rhtml-mode)
-(add-hook 'rhtml-mode-hook (lambda () (rinari-launch)))
+(add-hook 'rhtml-mode-hook 'rinari-launch)
 
 ; ruby
 (setq auto-mode-alist (cons '("Rakefile" . ruby-mode) auto-mode-alist))
@@ -101,14 +101,15 @@
      "Minor mode for pseudo-structurally editing Lisp code."
      t)
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode +1)))
-(eval-after-load 'paredit
-  '(progn 
-     (define-key paredit-mode-map [C-M-backspace] 'paredit-backward-delete)))
 
 ; git
 (add-to-list 'load-path "~/.emacs.d/magit")
 (require 'magit)
 (global-set-key "\C-x\C-g" 'magit-status)
+
+; gist
+(add-to-list 'load-path "~/.emacs.d/gist.el")
+(require 'gist)
 
 ; js2
 (autoload 'js2-mode "js2" nil t)
@@ -138,8 +139,12 @@
 ; emacs shell
 (global-set-key "\C-x\C-z" 'shell) ; shortcut for shell
 
-(define-key shell-mode-map "\C-p" 'comint-previous-input)
-(define-key shell-mode-map "\C-n" 'comint-next-input)
+(eval-after-load 'shell
+  '(progn 
+     (define-key shell-mode-map "\C-p" 'comint-previous-input)
+     (define-key shell-mode-map "\C-n" 'comint-next-input)
+))
 
 ; ido
-(ido-mode)
+(ido-mode t)
+(setq ido-enable-flex-matching t)
