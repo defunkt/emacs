@@ -25,9 +25,11 @@
 
 (add-hook 'find-file-hook 'shebang-to-mode)
 
+; .bashrc should open in sh mode
+(setq auto-mode-alist (cons '("\\.bashrc" . sh-mode) auto-mode-alist))
+
 ; custom keys
 (global-set-key [C-tab] 'other-window) ; vimy window switching
-(global-set-key "\C-x\C-z" 'shell) ; shortcut for shell
 
 ; textmate style command+space
 (defun insert-blank-line-after-current ()
@@ -126,10 +128,15 @@
     (if (file-exists-p file-name)
         (call-process "/usr/bin/open" nil 0 nil file-name))))
 (define-key dired-mode-map "o" 'dired-open-mac)
+
+; - is `cd ..` (like vim)
 (define-key dired-mode-map "-" 'dired-up-directory)
 
 ; prefer dired over dumping dir list to buffer
 (global-set-key "\C-x\C-d" 'dired)
 
-; .bashrc should open in sh mode
-(setq auto-mode-alist (cons '("\\.bashrc" . sh-mode) auto-mode-alist))
+; emacs shell
+(global-set-key "\C-x\C-z" 'shell) ; shortcut for shell
+
+(define-key shell-mode-map "\C-p" 'comint-previous-input)
+(define-key shell-mode-map "\C-n" 'comint-next-input)
