@@ -122,6 +122,9 @@
 (custom-set-variables '(javascript-shell-command "johnson"))
 (autoload 'javascript-shell "javascript-mode" nil t)
 
+; growl
+(require 'growl)
+
 ; Dired
 (require 'dired)
 
