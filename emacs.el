@@ -107,25 +107,6 @@
 (add-to-list 'load-path "~/.emacs.d/magit")
 (require 'magit)
 
-(add-to-list 'load-path "~/.emacs.d/git-emacs")
-(require 'git-emacs)
-
-(defun git-exec-command (command)
-  (let ((git-bin "/usr/local/git/bin/git "))
-    (shell-command (concat git-bin command))))
-
-; git-push
-(defun git-push ()
-  (interactive)
-  (message "Pushing...")
-  (git-exec-command "push"))
-
-; git-pull
-(defun git-pull ()
-  (interactive)
-  (message "Pulling...")
-  (git-exec-command "pull"))
-
 ; js2
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))

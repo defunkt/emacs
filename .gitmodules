@@ -4,9 +4,6 @@
 [submodule "markdown-mode"]
 	path = emacs.d/markdown-mode
 	url = git://github.com/defunkt/markdown-mode.git
-[submodule "git-emacs"]
-	path = emacs.d/git-emacs
-	url = git://github.com/tsgates/git-emacs.git
 [submodule "twilight-emacs"]
 	path = emacs.d/twilight-emacs
 	url = git://github.com/crafterm/twilight-emacs.git
