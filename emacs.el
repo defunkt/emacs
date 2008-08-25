@@ -32,18 +32,9 @@
 ; textmate style command+space
 (defun insert-blank-line-after-current ()
   (interactive)
-  (next-line)
-  (beginning-of-line)
+  (end-of-line)
   (insert "\n"))
 (global-set-key [A-return] 'insert-blank-line-after-current)
-
-(defun edit-my-preferences ()
-  "Edits my local preferences."
-  (interactive)
-  (find-file 
-   ; Change this for your homedir!
-   "~/Library/Preferences/Aquamacs Emacs/Preferences.el"))
-(global-set-key "\C-xP" 'edit-my-preferences)
 
 (defadvice zap-to-char (after my-zap-to-char-advice (arg char) activate)
   "Kill up to the ARG'th occurence of CHAR, and leave CHAR.
