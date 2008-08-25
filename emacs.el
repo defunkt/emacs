@@ -140,3 +140,6 @@
 
 (define-key shell-mode-map "\C-p" 'comint-previous-input)
 (define-key shell-mode-map "\C-n" 'comint-next-input)
+
+; ido
+(ido-mode)
