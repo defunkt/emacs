@@ -86,6 +86,9 @@
 ; ruby
 (setq auto-mode-alist (cons '("Rakefile" . ruby-mode) auto-mode-alist))
 
+; treetop
+(require 'treetop)
+
 ; markdown
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (autoload 'markdown-mode "markdown-mode.el"
