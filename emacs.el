@@ -9,10 +9,25 @@
 (setq cua-highlight-region-shift-only t)
 (one-buffer-one-frame-mode 0) ; forces everything to open in one window
 (tool-bar-mode) ; get rid of the damn toolbar
+(prefer-coding-system 'utf-8)
+
+; set the mode based on the shebang
+(defun shebang-to-mode ()
+  (interactive)
+  (let* 
+      ((bang (nth 0 (split-string (buffer-string) "\n")))
+       (mode (progn
+               (string-match "^#!.+[ /]\\(\\w+\\)$" bang)
+               (match-string 1 bang)))
+       (mode-fn (intern (concat mode "-mode"))))
+    (when (and mode (functionp mode-fn))
+      (funcall mode-fn))))
+
+(add-hook 'find-file-hook 'shebang-to-mode)
 
 ; custom keys
-(define-key global-map [\C-tab] 'other-window) ; vimy window switching
-(define-key global-map "\C-x\C-z" 'shell) ; shortcut for shell
+(global-set-key [C-tab] 'other-window) ; vimy window switching
+(global-set-key "\C-x\C-z" 'shell) ; shortcut for shell
 
 ; textmate style command+space
 (defun insert-blank-line-after-current ()
@@ -20,7 +35,7 @@
   (next-line)
   (beginning-of-line)
   (insert "\n"))
-(define-key global-map [A-return] 'insert-blank-line-after-current)
+(global-set-key [A-return] 'insert-blank-line-after-current)
 
 (defun edit-my-preferences ()
   "Edits my local preferences."
@@ -28,7 +43,7 @@
   (find-file 
    ; Change this for your homedir!
    "~/Library/Preferences/Aquamacs Emacs/Preferences.el"))
-(define-key global-map "\C-xP" 'edit-my-preferences)
+(global-set-key "\C-xP" 'edit-my-preferences)
 
 (defadvice zap-to-char (after my-zap-to-char-advice (arg char) activate)
   "Kill up to the ARG'th occurence of CHAR, and leave CHAR.
@@ -62,7 +77,7 @@
 ;   M-x mac-font-panel 
 ;   pick your font
 ;   M-x describe-font
-(set-default-font "-apple-inconsolata-medium-r-normal--16-160-72-72-m-160-iso10646-1")
+(setq default-frame-alist '((font . "-apple-inconsolata-medium-r-normal--16-160-72-72-m-160-iso10646-1")))
 
 ; rinari
 (add-to-list 'load-path "~/.emacs.d/rinari/")
@@ -83,6 +98,10 @@
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
+
+; cheat
+(add-to-list 'load-path "~/.emacs.d/cheat.el")
+(require 'cheat)
 
 ; git
 (add-to-list 'load-path "~/.emacs.d/magit")
@@ -124,7 +143,7 @@
 (define-key dired-mode-map "-" 'dired-up-directory)
 
 ; prefer dired over dumping dir list to buffer
-(define-key global-map "\C-x\C-d" 'dired)
+(global-set-key "\C-x\C-d" 'dired)
 
 ; .bashrc should open in sh mode
 (setq auto-mode-alist (cons '("\\.bashrc" . sh-mode) auto-mode-alist))
