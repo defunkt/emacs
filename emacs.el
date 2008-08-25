@@ -11,6 +11,8 @@
 (tool-bar-mode) ; get rid of the damn toolbar
 (prefer-coding-system 'utf-8)
 
+(load ".passwords")
+
 ; set the mode based on the shebang
 (defun shebang-to-mode ()
   (interactive)
@@ -75,7 +77,6 @@
 ; rinari
 (add-to-list 'load-path "~/.emacs.d/rinari/")
 (require 'rinari)
-(global-set-key (kbd "C-x C-M-f") 'find-file-in-project) ;; optional
 (setq rinari-tags-file-name "TAGS")
 
 ; rhtml
