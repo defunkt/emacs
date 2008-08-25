@@ -103,9 +103,19 @@
 (add-to-list 'load-path "~/.emacs.d/cheat.el")
 (require 'cheat)
 
+; paredit
+(autoload 'paredit-mode "paredit"
+     "Minor mode for pseudo-structurally editing Lisp code."
+     t)
+(add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode +1)))
+(eval-after-load 'paredit
+  '(progn 
+     (define-key paredit-mode-map [C-M-backspace] 'paredit-backward-delete)))
+
 ; git
 (add-to-list 'load-path "~/.emacs.d/magit")
 (require 'magit)
+(global-set-key "\C-x\C-g" 'magit-status)
 
 ; js2
 (autoload 'js2-mode "js2" nil t)
