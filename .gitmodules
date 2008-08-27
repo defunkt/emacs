@@ -18,4 +18,4 @@
 	url = git://github.com/defunkt/cheat.el.git
 [submodule "emacs.d/gist.el"]
 	path = emacs.d/gist.el
-	url = git@github.com:defunkt/gist.el.git
+	url = git://github.com/defunkt/gist.el.git
