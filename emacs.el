@@ -13,10 +13,16 @@
 
 (load ".passwords")
 
-; set the mode based on the shebang
+(defun find-dot-emacs ()
+  (interactive)
+  (find-file "~/.emacs"))
+(global-set-key "\C-xp" 'find-dot-emacs)
+
+; set the mode based on the shebang;
+; TODO: this sometimes breaks
 (defun shebang-to-mode ()
   (interactive)
-  (let* 
+  (let*
       ((bang (nth 0 (split-string (buffer-string) "\n")))
        (mode (progn
                (string-match "^#!.+[ /]\\(\\w+\\)$" bang)
@@ -25,7 +31,43 @@
     (when (functionp mode-fn)
       (funcall mode-fn))))
 
-(add-hook 'find-file-hook 'shebang-to-mode)
+; (add-hook 'find-file-hook 'shebang-to-mode)
+
+(defun url-fetch-into-buffer (url)
+  (interactive "sURL:")
+  (insert (concat "\n\n" ";; " url "\n"))
+  (insert (url-fetch-to-string url)))
+
+(defun url-fetch-to-string (url)
+  (with-current-buffer (url-retrieve-synchronously url)
+    (beginning-of-buffer)
+    (search-forward-regexp "\n\n")
+    (delete-region (point-min) (point))
+    (buffer-string)))
+
+;; from http://platypope.org/blog/2007/8/5/a-compendium-of-awesomeness
+;; I-search with initial contents
+(defvar isearch-initial-string nil)
+
+(defun isearch-set-initial-string ()
+  (remove-hook 'isearch-mode-hook 'isearch-set-initial-string)
+  (setq isearch-string isearch-initial-string)
+  (isearch-search-and-update))
+
+(defun isearch-forward-at-point (&optional regexp-p no-recursive-edit)
+  "Interactive search forward for the symbol at point."
+  (interactive "P\np")
+  (if regexp-p (isearch-forward regexp-p no-recursive-edit)
+    (let* ((end (progn (skip-syntax-forward "w_") (point)))
+           (begin (progn (skip-syntax-backward "w_") (point))))
+      (if (eq begin end)
+          (isearch-forward regexp-p no-recursive-edit)
+        (setq isearch-initial-string (buffer-substring begin end))
+        (add-hook 'isearch-mode-hook 'isearch-set-initial-string)
+        (isearch-forward regexp-p no-recursive-edit)))))
+
+; TODO: this doesn't work at all yet
+(global-set-key [C-*] 'isearch-forward-at-point)
 
 ; .bashrc should open in sh mode
 (setq auto-mode-alist (cons '("\\.bashrc" . sh-mode) auto-mode-alist))
@@ -69,7 +111,7 @@
 (load-file "~/.emacs.d/twilight-emacs/color-theme-twilight.el")
 (color-theme-twilight)
 ; how to get the font you want:
-;   M-x mac-font-panel 
+;   M-x mac-font-panel
 ;   pick your font
 ;   M-x describe-font
 (setq default-frame-alist '((font . "-apple-inconsolata-medium-r-normal--16-160-72-72-m-160-iso10646-1")))
@@ -170,10 +212,9 @@
 (global-set-key "\C-x\C-z" 'shell) ; shortcut for shell
 
 (eval-after-load 'shell
-  '(progn 
+  '(progn
      (define-key shell-mode-map "\C-p" 'comint-previous-input)
-     (define-key shell-mode-map "\C-n" 'comint-next-input)
-))
+     (define-key shell-mode-map "\C-n" 'comint-next-input)))
 
 ; ido
 (ido-mode t)
