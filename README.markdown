@@ -1,15 +1,21 @@
 defunkt's .emacs
 ================
 
-On 2008-08-17 I decided to switch from Vim to Emacs.
+This is Aquamacs specific, for now.  I'll factor out the specific 
+stuff in the future.
 
-My primary motivation was a desire for extensibility, rather than
-scriptability.
+I also plan to break my custom config into multiple files, eventually.
 
-Also, elisp > vimscript.
 
-This repository is my configuration.  
+Installation
+============
 
-It will grow as I grow. 
+$ cd ~/ProjectsOrWhatever
+$ git clone git://github.com/defunkt/emacs.git
+$ ruby ~/ProjectsOrWhatever/emacs/install.rb
+
+
+Author
+======
 
 (chris@ozmm.org) ; chris wanstrath
