@@ -1,6 +1,6 @@
 [submodule "rinari"]
 	path = emacs.d/rinari
-	url = git://github.com/technomancy/rinari.git
+	url = git://github.com/eschulte/rinari.git
 [submodule "markdown-mode"]
 	path = emacs.d/markdown-mode
 	url = git://github.com/defunkt/markdown-mode.git
