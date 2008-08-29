@@ -1,0 +1,5 @@
+(defun twittering-friends-refresh ()
+  (interactive)
+  (twittering-mode)
+  (twittering-friends-timeline))
+(global-set-key "\C-x\C-t" 'twittering-friends-refresh)

@@ -1,3 +1,4 @@
 emacs.d/.passwords
 emacs.d/url/*
 .DS_Store
+emacs.d/local.el
