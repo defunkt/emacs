@@ -89,49 +89,6 @@ See the variable `align-rules-list' for more details.")
            hs-special-modes-alist)))
   (hs-minor-mode arg))
 
-;; flymake ruby support
-
-(require 'flymake nil t)
-
-(defconst flymake-allowed-ruby-file-name-masks
-  '(("\\.rb\\'"      flymake-ruby-init)
-    ("\\.rxml\\'"    flymake-ruby-init)
-    ("\\.builder\\'" flymake-ruby-init)
-    ("\\.rjs\\'"     flymake-ruby-init))
-  "Filename extensions that switch on flymake-ruby mode syntax checks.")
-
-(defconst flymake-ruby-error-line-pattern-regexp
-  '("^\\([^:]+\\):\\([0-9]+\\): *\\([\n]+\\)" 1 2 nil 3)
-  "Regexp matching ruby error messages.")
-
-(defun flymake-ruby-init ()
-  (condition-case er
-      (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                         'flymake-create-temp-inplace))
-             (local-file  (file-relative-name
-                           temp-file
-                           (file-name-directory buffer-file-name))))
-        (list rails-ruby-command (list "-c" local-file)))
-    ('error ())))
-
-(defun flymake-ruby-load ()
-  (when (and (buffer-file-name)
-             (string-match
-              (format "\\(%s\\)"
-                      (string-join
-                       "\\|"
-                       (mapcar 'car flymake-allowed-ruby-file-name-masks)))
-              (buffer-file-name)))
-    (setq flymake-allowed-file-name-masks
-          (append flymake-allowed-file-name-masks flymake-allowed-ruby-file-name-masks))
-    (setq flymake-err-line-patterns
-          (cons flymake-ruby-error-line-pattern-regexp flymake-err-line-patterns))
-    (flymake-mode t)
-    (local-set-key (rails-key "d") 'flymake-display-err-menu-for-current-line)))
-
-(when (featurep 'flymake)
-  (add-hook 'ruby-mode-hook 'flymake-ruby-load))
-
 ;; other stuff
 
 (defun ruby-newline-and-indent ()
