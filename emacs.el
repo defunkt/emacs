@@ -16,7 +16,12 @@
 (defun find-dot-emacs ()
   (interactive)
   (find-file "~/.emacs"))
+
+(defun find-customizations ()
+  (interactive)
+  (find-file "~/Library/Preferences/Aquamacs Emacs/customizations.el"))
 (global-set-key "\C-xp" 'find-dot-emacs)
+(global-set-key "\C-xc" 'find-customizations)
 
 ; set the mode based on the shebang;
 ; TODO: this sometimes breaks
@@ -79,7 +84,7 @@
 (defun insert-blank-line-after-current ()
   (interactive)
   (end-of-line)
-  (insert "\n"))
+  (newline-and-indent))
 (global-set-key [A-return] 'insert-blank-line-after-current)
 
 (defadvice zap-to-char (after my-zap-to-char-advice (arg char) activate)
@@ -174,7 +179,7 @@
 ; git
 (add-to-list 'load-path "~/.emacs.d/magit")
 (require 'magit)
-(global-set-key "\C-x\C-g" 'magit-status)
+(global-set-key "\C-xg" 'magit-status)
 
 ; gist
 (add-to-list 'load-path "~/.emacs.d/gist.el")
@@ -183,6 +188,7 @@
 ; js2
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(custom-set-variables '(js2-strict-missing-semi-warning nil))
 
 ; js-shell
 (custom-set-variables '(javascript-shell-command "johnson"))
@@ -210,6 +216,7 @@
 
 ; emacs shell
 (global-set-key "\C-x\C-z" 'shell) ; shortcut for shell
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (eval-after-load 'shell
   '(progn
