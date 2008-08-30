@@ -6,6 +6,11 @@
 (global-set-key [C-tab] 'other-window) ; vimy window switching
 
 ;; functions
+(defun insert-soft-tab ()
+  (interactive)
+  (insert "  "))
+(global-set-key [C-M-tab] 'insert-soft-tab)
+
 (defun find-dot-emacs ()
   (interactive)
   (find-file "~/.emacs.d/defunkt.el"))
