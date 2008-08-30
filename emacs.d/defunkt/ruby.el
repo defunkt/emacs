@@ -1,17 +1,14 @@
 ; rinari
-(add-to-list 'load-path "~/.emacs.d/vendor/rinari/")
-(require 'rinari)
+(vendor 'rinari)
 (setq rinari-tags-file-name "TAGS")
 
 ; rhtml
-(add-to-list 'load-path "~/.emacs.d/vendor/rhtml")
-(require 'rhtml-mode)
-(add-hook 'rhtml-mode-hook 'rinari-launch)
-(setq auto-mode-alist (cons '("\\.html\\.erb" . rhtml-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.html\\.erb" . nxml-mode) auto-mode-alist))
 
 ; ruby
-(require 'ruby-hacks)
+(vendor 'ruby-hacks)
 (setq auto-mode-alist (cons '("Rakefile" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.rake" . ruby-mode) auto-mode-alist))
 (add-hook 'ruby-mode-hook
           (lambda ()
             (add-hook 'local-write-file-hooks
@@ -26,4 +23,4 @@
             (ruby-electric-mode t)))
 
 ; treetop
-(require 'treetop)
+(vendor 'treetop)
