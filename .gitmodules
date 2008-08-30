@@ -7,15 +7,12 @@
 [submodule "twilight-emacs"]
 	path = emacs.d/vendor/twilight-emacs
 	url = git://github.com/crafterm/twilight-emacs.git
-[submodule "emacs.d/rhtml"]
-	path = emacs.d/vendor/rhtml
-	url = git://github.com/eschulte/rhtml.git
-[submodule "emacs.d/magit"]
+[submodule "/magit"]
 	path = emacs.d/vendor/magit
 	url = git://github.com/technomancy/magit.git
-[submodule "emacs.d/cheat.el"]
+[submodule "cheat.el"]
 	path = emacs.d/vendor/cheat.el
 	url = git://github.com/defunkt/cheat.el.git
-[submodule "emacs.d/gist.el"]
+[submodule "gist.el"]
 	path = emacs.d/vendor/gist.el
 	url = git://github.com/defunkt/gist.el.git
