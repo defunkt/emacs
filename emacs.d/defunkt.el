@@ -1,5 +1,9 @@
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
+; custom place to save customizations
+(setq custom-file "~/.emacs.d/defunkt/custom.el")
+(load custom-file)
+
 (load ".passwords")
 
 (load "defunkt/global")
