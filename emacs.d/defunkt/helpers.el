@@ -42,7 +42,7 @@
 (defun shebang-to-mode ()
   (interactive)
   (let*
-      ((bang (nth 0 (split-string (buffer-string) "\n")))
+      ((bang (buffer-substring (point-min) (prog2 (end-of-line) (point) (move-beginning-of-line 1))))
        (mode (progn
                (string-match "^#!.+[ /]\\(\\w+\\)$" bang)
                (match-string 1 bang)))
@@ -50,7 +50,7 @@
     (when (functionp mode-fn)
       (funcall mode-fn))))
 
-; (add-hook 'find-file-hook 'shebang-to-mode)
+(add-hook 'find-file-hook 'shebang-to-mode)
 
 ; textmate style command+space
 (defun insert-blank-line-after-current ()
