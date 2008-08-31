@@ -16,10 +16,28 @@
   (find-file "~/.emacs.d/defunkt.el"))
 (global-set-key "\C-xp" 'find-dot-emacs)
 
-(defun find-customizations ()
-  (interactive)
-  (find-file "~/Library/Preferences/Aquamacs Emacs/customizations.el"))
-(global-set-key "\C-xc" 'find-customizations)
+;; fix kill-word
+(defun defunkt-kill-word (arg)
+  "Special version of kill-word which swallows spaces separate from words"
+  (interactive "p")
+
+  (let ((whitespace-regexp "\\s-+"))
+    (kill-region (point) 
+                 (if (looking-at whitespace-regexp)
+                     (progn (re-search-forward whitespace-regexp) (point))
+                   (progn (forward-word arg) (point))))))
+(global-set-key [remap kill-word] 'defunkt-kill-word)
+
+(defun defunkt-backward-kill-word (arg)
+  "Special version of backward-kill-word which swallows spaces separate from words"
+  (interactive "p")
+
+  (let ((whitespace-regexp "\\s-+"))
+    (if (looking-back whitespace-regexp)
+        (kill-region (point) (progn (re-search-backward "\\S-") (forward-char 1) (point)))
+      (backward-kill-word arg))))
+(global-set-key [remap backward-kill-word] 'defunkt-backward-kill-word)
+(global-set-key [remap aquamacs-backward-kill-word] 'defunkt-backward-kill-word)
 
 ; set the mode based on the shebang;
 ; TODO: this sometimes breaks
