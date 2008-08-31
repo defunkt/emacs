@@ -31,11 +31,9 @@
 (defun defunkt-backward-kill-word (arg)
   "Special version of backward-kill-word which swallows spaces separate from words"
   (interactive "p")
-
-  (let ((whitespace-regexp "\\s-+"))
-    (if (looking-back whitespace-regexp)
-        (kill-region (point) (progn (re-search-backward "\\S-") (forward-char 1) (point)))
-      (backward-kill-word arg))))
+  (if (looking-back "\\s-+")
+      (kill-region (point) (progn (re-search-backward "\\S-") (forward-char 1) (point)))
+    (backward-kill-word arg)))
 (global-set-key [remap backward-kill-word] 'defunkt-backward-kill-word)
 (global-set-key [remap aquamacs-backward-kill-word] 'defunkt-backward-kill-word)
 
