@@ -16,6 +16,3 @@
 [submodule "gist.el"]
 	path = emacs.d/vendor/gist.el
 	url = git://github.com/defunkt/gist.el.git
-[submodule "emacs.d/vendor/campfire-mode"]
-	path = emacs.d/vendor/campfire-mode
-	url = git://github.com/defunkt/campfire-mode.git
