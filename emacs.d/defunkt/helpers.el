@@ -13,6 +13,26 @@
   (insert "  "))
 (global-set-key [C-M-tab] 'insert-soft-tab)
 
+;; experimantal
+(defun defunkt-indent-region (&optional start end)
+  (interactive "r")
+  (message (concat "start: " (number-to-string start) " end: " (number-to-string end)))
+  (save-excursion
+    (goto-char start)
+    (while (> end (point))
+      (defunkt-indent)
+      (next-line))))
+;(global-set-key [M-tab] 'defunkt-indent-region)
+
+; experimental
+(defun defunkt-indent () 
+  (interactive)
+  (save-excursion
+    (beginning-of-line)
+    (when (looking-at "\\s-+") (defunkt-kill-word 1))
+    (insert "  ")))
+;(global-set-key "\t" 'defunkt-indent)
+
 (defun find-dot-emacs ()
   (interactive)
   (find-file "~/.emacs.d/defunkt.el"))
