@@ -6,6 +6,9 @@
   ;; If there is more than one, they won't work right.
  '(aquamacs-customization-version-id 144 t)
  '(javascript-shell-command "johnson")
+ '(js2-auto-indent-flag t)
+ '(js2-bounce-indent-flag t)
+ '(js2-enter-indents-newline t)
  '(js2-strict-missing-semi-warning nil)
  '(transient-mark-mode t))
 (custom-set-faces

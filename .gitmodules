@@ -18,4 +18,4 @@
 	url = git://github.com/defunkt/gist.el.git
 [submodule "emacs.d/vendor/campfire-mode"]
 	path = emacs.d/vendor/campfire-mode
-	url = git://github.com/rubyist/campfire-mode.git
+	url = git://github.com/defunkt/campfire-mode.git

@@ -16,3 +16,4 @@
 (vendor 'gist)
 (vendor 'growl)
 (vendor 'twittering-mode)
+(vendor 'campfire-mode)
