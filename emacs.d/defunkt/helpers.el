@@ -45,9 +45,10 @@
 
   (let ((whitespace-regexp "\\s-+"))
     (kill-region (point) 
-                 (if (looking-at whitespace-regexp)
-                     (progn (re-search-forward whitespace-regexp) (point))
-                   (progn (forward-word arg) (point))))))
+                 (cond 
+                  ((looking-at whitespace-regexp) (re-search-forward whitespace-regexp) (point))
+                  ((looking-at "\n") (kill-line) (defunkt-kill-word arg))
+                  (t (forward-word arg) (point))))))
 (global-set-key [remap kill-word] 'defunkt-kill-word)
 
 (defun defunkt-backward-kill-word (arg)
