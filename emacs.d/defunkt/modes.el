@@ -23,6 +23,9 @@
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode +1)))
 
 
+; jasper
+(setq auto-mode-alist (cons '("\\.jr" . emacs-lisp-mode) auto-mode-alist))
+
 ; mode-compile
 (autoload 'mode-compile "mode-compile"
    "Command to compile current buffer file based on the major mode" t)
