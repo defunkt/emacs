@@ -11,7 +11,8 @@
 (defun insert-soft-tab ()
   (interactive)
   (insert "  "))
-(global-set-key [C-M-tab] 'insert-soft-tab)
+;(global-set-key [C-M-tab] 'insert-soft-tab)
+;(global-set-key "\C-i" 'insert-soft-tab);
 
 ;; experimantal
 (defun defunkt-indent-region (&optional start end)
