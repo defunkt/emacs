@@ -9,6 +9,10 @@
 (setq auto-mode-alist (cons '("\\.bashrc" . sh-mode) auto-mode-alist))
 
 
+; obj-c
+(setq auto-mode-alist (cons '("\\.m" . objc-mode) auto-mode-alist))
+
+
 ; markdown
 (add-to-list 'load-path "~/.emacs.d/vendor/markdown-mode")
 (autoload 'markdown-mode "markdown-mode.el"
