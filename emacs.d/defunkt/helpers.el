@@ -83,6 +83,16 @@
   (newline-and-indent))
 (global-set-key [A-return] 'insert-blank-line-after-current)
 
+; duplicate the current line
+(defun duplicate-line () 
+  (interactive)
+    (beginning-of-line)
+    (copy-region-as-kill (point) (progn (end-of-line) (point)))
+    (insert-blank-line-after-current)
+    (yank)
+    (beginning-of-line))
+(global-set-key [C-return] 'duplicate-line)
+
 ; for loading libraries in from the vendor directory
 (defun vendor (library)
   (let* ((file (symbol-name library)) 
