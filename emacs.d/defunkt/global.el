@@ -3,6 +3,8 @@
 (setq mac-emulate-three-button-mouse nil)
 (setq cua-highlight-region-shift-only t)
 (prefer-coding-system 'utf-8)
+(setq vc-handled-backends nil)
+(cua-mode nil)
 
 ;; works in both aquamacs and carbon
 (when (functionp 'tool-bar-mode)

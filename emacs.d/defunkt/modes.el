@@ -4,17 +4,11 @@
 (load "defunkt/shell")
 (load "defunkt/javascript")
 
-
-; turn off cua-mode because i hate it
-(cua-mode nil)
-
 ; bash
 (setq auto-mode-alist (cons '("\\.bashrc" . sh-mode) auto-mode-alist))
 
-
 ; obj-c
 (setq auto-mode-alist (cons '("\\.m" . objc-mode) auto-mode-alist))
-
 
 ; markdown
 (add-to-list 'load-path "~/.emacs.d/vendor/markdown-mode")
@@ -22,13 +16,11 @@
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
-
 ; paredit
 (autoload 'paredit-mode "paredit"
      "Minor mode for pseudo-structurally editing Lisp code."
      t)
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode +1)))
-
 
 ; jasper
 (setq auto-mode-alist (cons '("\\.jr" . emacs-lisp-mode) auto-mode-alist))
@@ -41,7 +33,6 @@
 (autoload 'mode-compile-kill "mode-compile"
  "Command to kill a compilation launched by `mode-compile'" t)
 (global-set-key "\C-ck" 'mode-compile-kill)
-
 
 ; ido
 (ido-mode t)
