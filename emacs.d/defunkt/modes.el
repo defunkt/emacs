@@ -5,6 +5,9 @@
 (load "defunkt/javascript")
 
 
+; turn off cua-mode because i hate it
+(cua-mode nil)
+
 ; bash
 (setq auto-mode-alist (cons '("\\.bashrc" . sh-mode) auto-mode-alist))
 
