@@ -73,8 +73,7 @@
        (mode-fn (intern (concat mode "-mode"))))
     (when (functionp mode-fn)
       (funcall mode-fn))))
-
-(add-hook 'find-file-hook 'shebang-to-mode)
+;(add-hook 'find-file-hook 'shebang-to-mode)
 
 ; textmate style command+space
 (defun insert-blank-line-after-current ()
