@@ -3,6 +3,7 @@
 (load "defunkt/isearch")
 
 ;; keys
+(global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key [C-tab] 'other-window) ; vimy window switching
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
