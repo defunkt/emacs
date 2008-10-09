@@ -106,22 +106,22 @@
     (when (file-exists-p (concat defunkt ".el"))
       (load defunkt))))
 
-(defun find-thing-at-point (&optional always-ask)
-  (interactive "P")
-  (let* ((at-point (thing-at-point 'symbol))
-         (s (and at-point (intern at-point)))
-         (v (or (variable-at-point)
-                (and s (boundp s) s)))
-         (f (or (function-called-at-point)
-                (and s (fboundp s) s))))
-    (push-mark (point) t)
-    (cond
-     (always-ask (call-interactively 'find-function))
-     ((and v (not (numberp v)))
-      (find-variable v))
-     ((and f (subrp (symbol-function f)))
-      (let ((buf-pos (find-function-search-for-symbol
-                      f nil (help-C-file-name (symbol-function f) 'subr))))
-        (and (car buf-pos) (pop-to-buffer (car buf-pos)))))
-     (f (find-function f))
-     (t (call-interactively 'find-function)))))
+(require 'thingatpt)
+(defun defunkt-change-num-at-point (fn)
+  (let* ((num (string-to-number (thing-at-point 'word)))
+         (bounds (bounds-of-thing-at-point 'word)))
+    (save-excursion
+      (goto-char (car bounds))
+      (defunkt-kill-word 1)
+      (insert (number-to-string (funcall fn num 1))))))
+
+(defun defunkt-inc-num-at-point ()
+  (interactive)
+  (defunkt-change-num-at-point '+))
+
+(defun defunkt-dec-num-at-point ()
+  (interactive)
+  (defunkt-change-num-at-point '-))
+
+(global-set-key [M-up] 'defunkt-inc-num-at-point)
+(global-set-key [M-down] 'defunkt-dec-num-at-point)
