@@ -10,6 +10,7 @@
 (load "defunkt/helpers")
 (load "defunkt/modes")
 (load "defunkt/theme")
+(load "defunkt/temp_files")
 
 (vendor 'cheat)
 (vendor 'magit)
