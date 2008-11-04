@@ -64,7 +64,7 @@
 
 ; set the mode based on the shebang;
 ; TODO: this sometimes breaks
-(defun shebang-to-mode ()
+(defun defunkt-shebang-to-mode ()
   (interactive)
   (let*
       ((bang (buffer-substring (point-min) (prog2 (end-of-line) (point) (move-beginning-of-line 1))))
@@ -74,7 +74,7 @@
        (mode-fn (intern (concat mode "-mode"))))
     (when (functionp mode-fn)
       (funcall mode-fn))))
-;(add-hook 'find-file-hook 'shebang-to-mode)
+;(add-hook 'find-file-hook 'defunkt-shebang-to-mode)
 
 ; textmate style command+space
 (defun insert-blank-line-after-current ()
