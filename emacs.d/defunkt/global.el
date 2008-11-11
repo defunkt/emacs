@@ -5,6 +5,7 @@
 (prefer-coding-system 'utf-8)
 (setq vc-handled-backends nil)
 (cua-mode nil)
+(setq gist-view-gist t)
 
 ;; works in both aquamacs and carbon
 (when (functionp 'tool-bar-mode)
