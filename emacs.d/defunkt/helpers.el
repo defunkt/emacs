@@ -10,9 +10,8 @@
 (global-set-key "\C-c\C-g" 'gist-buffer)
 
 ; no printing!
-(defun aquamacs-print ()
-  (interactive)
-  (message "nope"))
+(define-key osx-key-mode-map (kbd "A-p") 
+  '(lambda () (interactive) (message "noop")))
 
 ;; functions
 (defun insert-soft-tab ()
