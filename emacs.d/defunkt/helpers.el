@@ -7,13 +7,19 @@
 (global-set-key [C-tab] 'other-window) ; vimy window switching
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
+(global-set-key "\C-c\C-g" 'gist-buffer)
+
+; no printing!
+(defun aquamacs-print ()
+  (interactive)
+  (message "nope"))
 
 ;; functions
 (defun insert-soft-tab ()
   (interactive)
   (insert "  "))
 ;(global-set-key [C-M-tab] 'insert-soft-tab)
-;(global-set-key "\C-i" 'insert-soft-tab);
+;(global-set-key "\C-i" 'insert-soft-tab)
 
 ;; experimantal
 (defun defunkt-indent-region (&optional start end)
