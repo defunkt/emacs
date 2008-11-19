@@ -6,6 +6,7 @@
 
 (load ".passwords")
 
+(load "defunkt/lisp")
 (load "defunkt/global")
 (load "defunkt/helpers")
 (load "defunkt/modes")
