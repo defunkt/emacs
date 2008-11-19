@@ -17,10 +17,9 @@
 (defun insert-soft-tab ()
   (interactive)
   (insert "  "))
-;(global-set-key [C-M-tab] 'insert-soft-tab)
-;(global-set-key "\C-i" 'insert-soft-tab)
+(global-set-key "\M-i" 'insert-soft-tab)
 
-;; experimantal
+;; experimental
 (defun defunkt-indent-region (&optional start end)
   (interactive "r")
   (message (concat "start: " (number-to-string start) " end: " (number-to-string end)))
