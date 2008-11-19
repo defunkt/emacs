@@ -5,12 +5,20 @@
 ; js-shell
 (autoload 'javascript-shell "javascript-mode" nil t)
 
+(defun js2-insert-console ()
+  (interactive)
+  (insert "console.log()")
+  (backward-char))
+
 (defun js2-execute-buffer () 
   (interactive)
   (shell-command (concat "johnson " (buffer-file-name))))
 
 (add-hook 'js2-mode-hook '(lambda () 
-                            (define-key js2-mode-map [A-r] 'js2-execute-buffer)
+                            (define-key js2-mode-map (kbd "A-r") 'js2-execute-buffer)
+                            (define-key js2-mode-map (kbd "A-R") 'js2-execute-line)
+                            (define-key js2-mode-map "\C-T" 'js2-insert-console)
+                            
                             (defun js-continued-var-decl-list-p ()
                               "Return non-nil if point is inside a continued variable declaration
 list."
