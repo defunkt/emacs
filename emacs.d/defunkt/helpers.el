@@ -39,10 +39,15 @@
     (insert "  ")))
 ;(global-set-key "\t" 'defunkt-indent)
 
-(defun find-dot-emacs ()
+(defun defunkt-find-config ()
   (interactive)
-  (find-file "~/.emacs.d/defunkt.el"))
-(global-set-key "\C-xp" 'find-dot-emacs)
+  (let ((config-file
+         (completing-read "Config file: " (reject (directory-files "~/.emacs.d/defunkt/")
+                                                  (lambda (x) (string-match "^\\." x))))))
+    (if (eq config-file "")
+        (find-file "~/.emacs.d/defunkt.el")
+      (find-file (concat "~/.emacs.d/defunkt/" config-file)))))
+(global-set-key "\C-xp" 'defunkt-find-config)
 
 ;; fix kill-word
 (defun defunkt-kill-word (arg)
