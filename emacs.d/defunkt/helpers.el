@@ -33,10 +33,7 @@
 ; experimental
 (defun defunkt-indent () 
   (interactive)
-  (save-excursion
-    (beginning-of-line)
-    (when (looking-at "\\s-+") (defunkt-kill-word 1))
-    (insert "  ")))
+  (insert "  "))
 ;(global-set-key "\t" 'defunkt-indent)
 
 (defun defunkt-find-config ()
