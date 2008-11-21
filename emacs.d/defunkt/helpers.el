@@ -36,6 +36,12 @@
   (insert "  "))
 ;(global-set-key "\t" 'defunkt-indent)
 
+(defadvice zap-to-char (after dont-zap-char (arg char))
+  "Doesn't include the char - zaps to the char before it (like vim)."
+  (insert char)
+  (backward-char))
+(ad-activate 'zap-to-char)
+
 (defun defunkt-find-config ()
   (interactive)
   (let ((config-file
