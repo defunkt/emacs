@@ -40,4 +40,4 @@
 (setq ido-enable-flex-matching t)
 
 ; css
-(define-key css-mode-map [tab] 'defunkt-indent)
+;(define-key css-mode-map [tab] 'defunkt-indent)
