@@ -10,6 +10,7 @@
 (global-set-key "\C-c\C-g" 'gist-buffer)
 (global-set-key (kbd "A-M-]") 'align)
 (global-set-key (kbd "A-]") 'indent-region)
+(global-set-key "\C-xg" 'magit-status)
 
 ; no printing!
 (define-key osx-key-mode-map (kbd "A-p") 
