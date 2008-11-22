@@ -1,18 +1,21 @@
 [submodule "rinari"]
-	path = emacs.d/vendor/rinari
+	path = vendor/rinari
 	url = git://github.com/eschulte/rinari.git
 [submodule "markdown-mode"]
-	path = emacs.d/vendor/markdown-mode
+	path = vendor/markdown-mode
 	url = git://github.com/defunkt/markdown-mode.git
 [submodule "twilight-emacs"]
-	path = emacs.d/vendor/twilight-emacs
+	path = vendor/twilight-emacs
 	url = git://github.com/crafterm/twilight-emacs.git
 [submodule "/magit"]
-	path = emacs.d/vendor/magit
+	path = vendor/magit
 	url = git://github.com/technomancy/magit.git
 [submodule "cheat.el"]
-	path = emacs.d/vendor/cheat.el
+	path = vendor/cheat.el
 	url = git://github.com/defunkt/cheat.el.git
 [submodule "gist.el"]
-	path = emacs.d/vendor/gist.el
+	path = vendor/gist.el
 	url = git://github.com/defunkt/gist.el.git
+[submodule "fuzzy-find-in-project"]
+	path = vendor/fuzzy-find-in-project
+  url = git://github.com/avvo/fuzzy-find-in-project.git
