@@ -19,4 +19,4 @@
 (vendor 'gist)
 (vendor 'growl)
 (vendor 'twittering-mode)
-(vendor 'fuzzy-find-in-project)
+(load "vendor/textmate.el/textmate.el")
