@@ -4,7 +4,7 @@
 (setq custom-file "~/.emacs.d/defunkt/custom.el")
 (load custom-file)
 
-(load ".passwords")
+(when (file-exists-p ".passwords") (load ".passwords"))
 
 (load "defunkt/lisp")
 (load "defunkt/global")
