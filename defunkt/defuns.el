@@ -59,7 +59,7 @@
   (interactive)
     (beginning-of-line)
     (copy-region-as-kill (point) (progn (end-of-line) (point)))
-    (insert-blank-line-after-current)
+    (textmate-insert-blank-line-after-current)
     (yank)
     (beginning-of-line))
 
@@ -104,6 +104,10 @@
     (search-forward-regexp "\n\n")
     (delete-region (point-min) (point))
     (buffer-string)))
+
+(defun gist-buffer-confirm ()
+  (interactive)
+  (when (yes-or-no-p "Are you sure you want to Gist this buffer? ") (gist-buffer)))
 
 ;; from http://platypope.org/blog/2007/8/5/a-compendium-of-awesomeness
 ;; I-search with initial contents
