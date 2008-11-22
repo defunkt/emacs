@@ -16,9 +16,6 @@
 [submodule "gist.el"]
 	path = vendor/gist.el
 	url = git://github.com/defunkt/gist.el.git
-[submodule "fuzzy-find-in-project"]
-	path = vendor/fuzzy-find-in-project
-  url = git://github.com/avvo/fuzzy-find-in-project.git
 [submodule "vendor/textmate.el"]
 	path = vendor/textmate.el
 	url = git://github.com/defunkt/textmate.el
