@@ -16,3 +16,4 @@
 (global-set-key [C-return] 'defunkt-duplicate-line)
 (global-set-key [M-up] 'defunkt-inc-num-at-point)
 (global-set-key [M-down] 'defunkt-dec-num-at-point)
+(global-set-key (kbd "C-*") 'isearch-forward-at-point)

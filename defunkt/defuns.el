@@ -2,8 +2,6 @@
 (load "defunkt/url")
 (load "defunkt/isearch")
 
-;; keys
-
 ; no printing!
 (define-key osx-key-mode-map (kbd "A-p") 
   '(lambda () (interactive) (message "noop")))
@@ -141,3 +139,36 @@
 (defun defunkt-dec-num-at-point ()
   (interactive)
   (defunkt-change-num-at-point '-))
+
+(defun url-fetch-into-buffer (url)
+  (interactive "sURL:")
+  (insert (concat "\n\n" ";; " url "\n"))
+  (insert (url-fetch-to-string url)))
+
+(defun url-fetch-to-string (url)
+  (with-current-buffer (url-retrieve-synchronously url)
+    (beginning-of-buffer)
+    (search-forward-regexp "\n\n")
+    (delete-region (point-min) (point))
+    (buffer-string)))
+
+;; from http://platypope.org/blog/2007/8/5/a-compendium-of-awesomeness
+;; I-search with initial contents
+(defvar isearch-initial-string nil)
+
+(defun isearch-set-initial-string ()
+  (remove-hook 'isearch-mode-hook 'isearch-set-initial-string)
+  (setq isearch-string isearch-initial-string)
+  (isearch-search-and-update))
+
+(defun isearch-forward-at-point (&optional regexp-p no-recursive-edit)
+  "Interactive search forward for the symbol at point."
+  (interactive "P\np")
+  (if regexp-p (isearch-forward regexp-p no-recursive-edit)
+    (let* ((end (progn (skip-syntax-forward "w_") (point)))
+           (begin (progn (skip-syntax-backward "w_") (point))))
+      (if (eq begin end)
+          (isearch-forward regexp-p no-recursive-edit)
+        (setq isearch-initial-string (buffer-substring begin end))
+        (add-hook 'isearch-mode-hook 'isearch-set-initial-string)
+        (isearch-forward regexp-p no-recursive-edit)))))
