@@ -3,14 +3,6 @@
 (load "defunkt/isearch")
 
 ;; keys
-(global-set-key "\C-x\C-b" 'buffer-menu)
-(global-set-key [C-tab] 'other-window) ; vimy window switching
-(global-set-key "\C-x\C-m" 'execute-extended-command)
-(global-set-key "\C-c\C-m" 'execute-extended-command)
-(global-set-key "\C-c\C-g" 'gist-buffer)
-(global-set-key (kbd "A-M-]") 'align)
-(global-set-key (kbd "A-]") 'indent-region)
-(global-set-key "\C-xg" 'magit-status)
 
 ; no printing!
 (define-key osx-key-mode-map (kbd "A-p") 
@@ -20,12 +12,10 @@
 (defun insert-soft-tab ()
   (interactive)
   (insert "  "))
-(global-set-key "\M-i" 'insert-soft-tab)
 
 (defun defunkt-indent () 
   (interactive)
   (insert "  "))
-;(global-set-key "\t" 'defunkt-indent)
 
 (defadvice zap-to-char (after dont-zap-char (arg char))
   "Doesn't include the char - zaps to the char before it (like vim)."
@@ -62,7 +52,7 @@
     (let* ((selected-symbol (ido-completing-read "Symbol? " symbol-names))
            (position (cdr (assoc selected-symbol name-and-pos))))
       (goto-char position))))
-(global-set-key "\C-x\C-i" 'ido-goto-symbol)
+
 
 (defun defunkt-find-config ()
   (interactive)
@@ -72,7 +62,6 @@
     (if (empty? config-file)
         (find-file "~/.emacs.d/defunkt.el")
       (find-file (concat "~/.emacs.d/defunkt/" config-file)))))
-(global-set-key "\C-xp" 'defunkt-find-config)
 
 ;; fix kill-word
 (defun defunkt-kill-word (arg)
@@ -85,7 +74,6 @@
                   ((looking-at whitespace-regexp) (re-search-forward whitespace-regexp) (point))
                   ((looking-at "\n") (kill-line) (defunkt-kill-word arg))
                   (t (forward-word arg) (point))))))
-(global-set-key [remap kill-word] 'defunkt-kill-word)
 
 (defun defunkt-backward-kill-word (arg)
   "Special version of backward-kill-word which swallows spaces separate from words"
@@ -93,8 +81,6 @@
   (if (looking-back "\\s-+")
       (kill-region (point) (progn (re-search-backward "\\S-") (forward-char 1) (point)))
     (backward-kill-word arg)))
-(global-set-key [remap backward-kill-word] 'defunkt-backward-kill-word)
-(global-set-key [remap aquamacs-backward-kill-word] 'defunkt-backward-kill-word)
 
 ; set the mode based on the shebang;
 ; TODO: this sometimes breaks
@@ -115,7 +101,7 @@
   (interactive)
   (end-of-line)
   (newline-and-indent))
-(global-set-key [A-return] 'insert-blank-line-after-current)
+
 
 ; duplicate the current line
 (defun defunkt-duplicate-line () 
@@ -125,7 +111,6 @@
     (insert-blank-line-after-current)
     (yank)
     (beginning-of-line))
-(global-set-key [C-return] 'defunkt-duplicate-line)
 
 ; for loading libraries in from the vendor directory
 (defun vendor (library)
@@ -156,6 +141,3 @@
 (defun defunkt-dec-num-at-point ()
   (interactive)
   (defunkt-change-num-at-point '-))
-
-(global-set-key [M-up] 'defunkt-inc-num-at-point)
-(global-set-key [M-down] 'defunkt-dec-num-at-point)

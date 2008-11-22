@@ -8,7 +8,8 @@
 
 (load "defunkt/lisp")
 (load "defunkt/global")
-(load "defunkt/helpers")
+(load "defunkt/defuns")
+(load "defunkt/bindings")
 (load "defunkt/modes")
 (load "defunkt/theme")
 (load "defunkt/temp_files")
