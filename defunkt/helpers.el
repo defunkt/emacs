@@ -21,18 +21,6 @@
   (insert "  "))
 (global-set-key "\M-i" 'insert-soft-tab)
 
-;; experimental
-(defun defunkt-indent-region (&optional start end)
-  (interactive "r")
-  (message (concat "start: " (number-to-string start) " end: " (number-to-string end)))
-  (save-excursion
-    (goto-char start)
-    (while (> end (point))
-      (defunkt-indent)
-      (next-line))))
-;(global-set-key [M-tab] 'defunkt-indent-region)
-
-; experimental
 (defun defunkt-indent () 
   (interactive)
   (insert "  "))
@@ -80,7 +68,7 @@
   (let ((config-file
          (completing-read "Config file: " (reject (directory-files "~/.emacs.d/defunkt/")
                                                   (lambda (x) (string-match "^\\." x))))))
-    (if (eq config-file "")
+    (if (empty? config-file)
         (find-file "~/.emacs.d/defunkt.el")
       (find-file (concat "~/.emacs.d/defunkt/" config-file)))))
 (global-set-key "\C-xp" 'defunkt-find-config)
@@ -129,14 +117,14 @@
 (global-set-key [A-return] 'insert-blank-line-after-current)
 
 ; duplicate the current line
-(defun duplicate-line () 
+(defun defunkt-duplicate-line () 
   (interactive)
     (beginning-of-line)
     (copy-region-as-kill (point) (progn (end-of-line) (point)))
     (insert-blank-line-after-current)
     (yank)
     (beginning-of-line))
-(global-set-key [C-return] 'duplicate-line)
+(global-set-key [C-return] 'defunkt-duplicate-line)
 
 ; for loading libraries in from the vendor directory
 (defun vendor (library)
