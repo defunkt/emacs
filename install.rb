@@ -18,7 +18,7 @@ Link = V do |target, new|
 end
 
 Link[ 'emacs.el', '.emacs' ]
-Link[ 'emacs.d',  '.emacs.d' ]
+Link[ '.',  '.emacs.d' ]
 
 Git = V do |command|
   `git --git-dir=#{Dir}/.git #{command}`
