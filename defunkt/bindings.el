@@ -16,13 +16,6 @@
 (global-set-key [remap backward-kill-word] 'defunkt-backward-kill-word)
 (global-set-key [remap aquamacs-backward-kill-word] 'defunkt-backward-kill-word)
 
-; textmate emulation
-(global-set-key [A-return] 'insert-blank-line-after-current)
-(global-set-key (kbd "A-M-]") 'align)
-(global-set-key (kbd "A-]") 'indent-region)
-(define-key osx-key-mode-map (kbd "A-t") 'fuzzy-find-in-project)
-(define-key osx-key-mode-map (kbd "A-T") 'ido-goto-symbol)
-
 ; no printing!
 (define-key osx-key-mode-map (kbd "A-p") 
   '(lambda () (interactive) (message "noop")))
