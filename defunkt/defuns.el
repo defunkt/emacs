@@ -15,7 +15,7 @@
 (defun defunkt-find-config ()
   (interactive)
   (let ((config-file
-         (completing-read "Config file: " (reject (directory-files "~/.emacs.d/defunkt/")
+         (ido-completing-read "Config file: " (reject (directory-files "~/.emacs.d/defunkt/")
                                                   (lambda (x) (string-match "^\\." x))))))
     (if (empty? config-file)
         (find-file "~/.emacs.d/defunkt.el")
