@@ -17,3 +17,7 @@
 (global-set-key [M-up] 'defunkt-inc-num-at-point)
 (global-set-key [M-down] 'defunkt-dec-num-at-point)
 (global-set-key (kbd "C-*") 'isearch-forward-at-point)
+
+; no printing!
+(define-key osx-key-mode-map (kbd "A-p") 
+  '(lambda () (interactive) (message "noop")))

@@ -1,12 +1,3 @@
-;; others
-(load "defunkt/url")
-(load "defunkt/isearch")
-
-; no printing!
-(define-key osx-key-mode-map (kbd "A-p") 
-  '(lambda () (interactive) (message "noop")))
-
-;; functions
 (defun insert-soft-tab ()
   (interactive)
   (insert "  "))
