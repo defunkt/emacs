@@ -7,6 +7,7 @@
  '(aquamacs-additional-fontsets nil t)
  '(aquamacs-customization-version-id 151 t)
  '(cua-mode nil nil (cua-base))
+ '(erc-modules (quote (autojoin button completion fill irccontrols match menu netsplit noncommands readonly ring scrolltobottom stamp track)))
  '(javascript-shell-command "johnson")
  '(js2-auto-indent-flag nil)
  '(js2-bounce-indent-flag t)
