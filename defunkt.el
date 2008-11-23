@@ -13,6 +13,7 @@
 (load "defunkt/modes")
 (load "defunkt/theme")
 (load "defunkt/temp_files")
+(load "defunkt/github")
 
 (vendor 'cheat)
 (vendor 'magit)

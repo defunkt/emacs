@@ -7,6 +7,7 @@
 (global-set-key "\M-i" 'insert-soft-tab)
 (global-set-key "\C-xp" 'defunkt-find-config)
 (global-set-key [C-return] 'defunkt-duplicate-line)
+(global-set-key "\C-x\C-g" 'github-ido-find-file)
 
 ; vim emulation
 (global-set-key [C-tab] 'other-window) 
