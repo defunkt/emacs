@@ -12,14 +12,16 @@
   (backward-char))
 (ad-activate 'zap-to-char)
 
-(defun defunkt-find-config ()
+(defun defunkt-ido-find-config ()
   (interactive)
-  (let ((config-file
-         (ido-completing-read "Config file: " (reject (directory-files "~/.emacs.d/defunkt/")
-                                                  (lambda (x) (string-match "^\\." x))))))
-    (if (empty? config-file)
-        (find-file "~/.emacs.d/defunkt.el")
-      (find-file (concat "~/.emacs.d/defunkt/" config-file)))))
+  (find-file   
+   (ido-completing-read "Config file: " 
+                        (reject (directory-files "~/.emacs.d/defunkt/")
+                                (lambda (x) (string-match "^\\." x))))))
+
+(defun defunkt-goto-config ()
+  (interactive)
+  (find-file "~/.emacs.d/defunkt.el"))
 
 ;; fix kill-word
 (defun defunkt-kill-word (arg)
