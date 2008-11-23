@@ -11,6 +11,12 @@
 ; obj-c
 (setq auto-mode-alist (cons '("\\.m" . objc-mode) auto-mode-alist))
 
+; magit
+(eval-after-load 'magit
+  '(progn
+     (set-face-foreground 'magit-diff-add "green3")
+     (set-face-foreground 'magit-diff-del "red3")))
+
 ; markdown
 (add-to-list 'load-path "~/.emacs.d/vendor/markdown-mode")
 (autoload 'markdown-mode "markdown-mode.el"
