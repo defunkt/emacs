@@ -17,7 +17,7 @@
   (find-file
    (concat "~/.emacs.d/defunkt/" (ido-completing-read "Config file: " 
                                    (reject (directory-files "~/.emacs.d/defunkt/")
-                                     (lambda (x) (string-match "^\\." x))))))))
+                                     (lambda (x) (string-match "^\\." x)))))))
 
 
 (defun defunkt-goto-config ()
