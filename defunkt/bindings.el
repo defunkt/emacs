@@ -9,6 +9,7 @@
 (global-set-key "\C-xP" 'defunkt-goto-config)
 (global-set-key [C-return] 'defunkt-duplicate-line)
 (global-set-key "\C-x\C-g" 'github-ido-find-file)
+(global-set-key "\C-R" 'replace-string)
 
 ; vim emulation
 (global-set-key [C-tab] 'other-window) 
