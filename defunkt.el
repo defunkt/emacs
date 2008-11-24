@@ -20,7 +20,5 @@
 (vendor 'gist)
 (vendor 'growl)
 (vendor 'twittering-mode)
-
-(add-to-list 'load-path "~/.emacs.d/vendor/textmate.el")
-(add-to-list 'load-path "~/.emacs.d/vendor/textmate.el/vendor/fuzzy-find-in-project")
-(load "textmate")
+(vendor 'textmate)
+(textmate-mode)
