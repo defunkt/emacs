@@ -14,6 +14,7 @@
 (load "defunkt/theme")
 (load "defunkt/temp_files")
 (load "defunkt/github")
+(load "defunkt/git")
 
 (vendor 'cheat)
 (vendor 'magit)
