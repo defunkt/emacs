@@ -66,9 +66,10 @@
   (interactive)
     (beginning-of-line)
     (copy-region-as-kill (point) (progn (end-of-line) (point)))
-    (textmate-insert-blank-line-after-current)
+    (textmate-next-line)
     (yank)
-    (beginning-of-line))
+    (beginning-of-line)
+    (indent-according-to-mode))
 
 ; for loading libraries in from the vendor directory
 (defun vendor (library)
