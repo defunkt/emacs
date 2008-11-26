@@ -26,5 +26,11 @@
             (require 'ruby-electric)
             (ruby-electric-mode t)))
 
+(defadvice ruby-do-run-w/compilation (before kill-buffer (name cmdlist))
+  (let ((comp-buffer-name (format "*%s*" name)))
+    (when (get-buffer comp-buffer-name)
+      (kill-buffer comp-buffer-name))))
+(ad-activate 'ruby-do-run-w/compilation)
+
 ; treetop
 (vendor 'treetop)
