@@ -22,8 +22,9 @@
 (global-set-key [remap aquamacs-backward-kill-word] 'defunkt-backward-kill-word)
 
 ; no printing!
-(define-key osx-key-mode-map (kbd "A-p") 
-  '(lambda () (interactive) (message "noop")))
+(when (boundp 'osx-key-mode-map)
+ (define-key osx-key-mode-map (kbd "A-p") 
+   '(lambda () (interactive) (message "noop"))))
 
 ; no mailing!
 (global-unset-key (kbd "C-x m"))

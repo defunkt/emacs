@@ -1,8 +1,11 @@
 (require 'color-theme)
-(color-theme-initialize)
+(when (fboundp 'color-theme-initialize)
+  (color-theme-initialize))
 (setq color-theme-is-global t)
+
 (load-file "~/.emacs.d/vendor/twilight-emacs/color-theme-twilight.el")
 (color-theme-twilight)
+
 ; how to get the font you want:
 ;   M-x mac-font-panel
 ;   pick your font
