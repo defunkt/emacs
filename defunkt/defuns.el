@@ -116,7 +116,7 @@
 (defun gist-buffer-confirm ()
   (interactive)
   (when (yes-or-no-p "Are you sure you want to Gist this buffer? ") 
-    (gist-buffer)))
+    (gist-region-or-buffer)))
 
 ;; from http://platypope.org/blog/2007/8/5/a-compendium-of-awesomeness
 ;; I-search with initial contents
