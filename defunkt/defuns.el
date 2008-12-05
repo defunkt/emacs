@@ -113,10 +113,10 @@
     (delete-region (point-min) (point))
     (buffer-string)))
 
-(defun gist-buffer-confirm ()
-  (interactive)
+(defun gist-buffer-confirm (&optional private)
+  (interactive "P")
   (when (yes-or-no-p "Are you sure you want to Gist this buffer? ") 
-    (gist-region-or-buffer)))
+    (gist-region-or-buffer private)))
 
 ;; from http://platypope.org/blog/2007/8/5/a-compendium-of-awesomeness
 ;; I-search with initial contents
