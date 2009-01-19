@@ -16,10 +16,12 @@
 (load "defunkt/github")
 (load "defunkt/git")
 
+(vendor 'ack)
 (vendor 'cheat)
 (vendor 'magit)
 (vendor 'gist)
 (vendor 'growl)
 (vendor 'twittering-mode)
+(vendor 'textile-mode)
 (vendor 'textmate)
 (textmate-mode)
