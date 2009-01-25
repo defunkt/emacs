@@ -24,5 +24,5 @@
  '(default ((t (:stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :family "apple-inconsolata"))))
  '(emacs-lisp-mode-default ((t (:inherit autoface-default :slant normal :weight normal :height 160 :family "inconsolata"))) t)
  '(minibuffer-prompt ((((background dark)) (:foreground "cyan" :height 160))))
- '(mode-line ((t (:background "grey75" :foreground "black" :height 160))))
+ '(mode-line ((t (:inherit aquamacs-variable-width :background "grey75" :foreground "black" :width normal))))
  '(text-mode-default ((t (:inherit autoface-default :strike-through nil :underline nil :slant normal :weight normal :height 160 :width normal :family "inconsolata"))) t))
