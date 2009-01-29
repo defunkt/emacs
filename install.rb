@@ -9,20 +9,21 @@ Joiner = V do |base|
   end
 end
 
-Dir  = File.dirname( __FILE__ )
 Home = Joiner[ File.expand_path( '~' ) ]
-Cwd  = Joiner[ Dir ]
+Cwd  = Joiner[ File.expand_path(File.dirname(__FILE__)) ]
 
 Link = V do |target, new|
   FileUtils.ln_s Cwd[ target ], Home[ new ] rescue puts("~/#{new} exists.")
 end
 
 Link[ 'emacs.el', '.emacs' ]
-Link[ '.',  '.emacs.d' ]
+Link[ '.', '.emacs.d' ]
 
-Git = V do |command|
-  `git --git-dir=#{Dir}/.git #{command}`
+Git = V do |command, dir|
+  `git --git-dir=#{dir}/.git #{command}`
 end
 
-Git[ 'submodule init' ]
-Git[ 'submodule update' ]
+Dir['**/.gitmodules'].each do |d|
+  Git[ 'submodule init',   File.dirname(d) ]
+  Git[ 'submodule update', File.dirname(d) ]
+end
