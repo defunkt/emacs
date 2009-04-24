@@ -22,7 +22,10 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(default ((t (:stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :family "apple-inconsolata"))))
- '(emacs-lisp-mode-default ((t (:inherit autoface-default :slant normal :weight normal :height 160 :family "inconsolata"))) t)
+ '(autoface-default ((t (:inherit default :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 161 :width normal :family "apple-inconsolata"))))
+ '(emacs-lisp-mode-default ((t (:inherit autoface-default))) t)
+ '(fundamental-mode-default ((t (:inherit autoface-default))) t)
+ '(js2-mode-default ((t (:inherit autoface-default))) t)
  '(minibuffer-prompt ((((background dark)) (:foreground "cyan" :height 160))))
  '(mode-line ((t (:inherit aquamacs-variable-width :background "grey75" :foreground "black" :width normal))))
- '(text-mode-default ((t (:inherit autoface-default :strike-through nil :underline nil :slant normal :weight normal :height 160 :width normal :family "inconsolata"))) t))
+ '(text-mode-default ((t (:inherit autoface-default))) t))
