@@ -32,5 +32,15 @@
       (kill-buffer comp-buffer-name))))
 (ad-activate 'ruby-do-run-w/compilation)
 
+; where'd this go?
+(defun ruby-reindent-then-newline-and-indent ()
+  (interactive "*")
+  (newline)
+  (save-excursion
+    (end-of-line 0)
+    (indent-according-to-mode)
+    (delete-region (point) (progn (skip-chars-backward " \t") (point))))
+  (indent-according-to-mode))
+
 ; treetop
 (vendor 'treetop)
