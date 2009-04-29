@@ -5,6 +5,7 @@
 (load "defunkt/javascript")
 (load "defunkt/erlang")
 (load "defunkt/python")
+(load "defunkt/private")
 
 ; bash
 (setq auto-mode-alist (cons '("\\.bashrc" . sh-mode) auto-mode-alist))
@@ -62,5 +63,3 @@
                      (erc-propertize (concat "ERC>") 'read-only t 'rear-nonsticky t 'front-nonsticky t))))
 
 (setq erc-track-exclude-types '("JOIN" "PART" "QUIT" "NICK" "MODE"))
-(setq erc-autojoin-channels-alist '(("freenode.net" "#github" "#fauna")))
-
