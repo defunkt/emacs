@@ -18,4 +18,4 @@
 	url = git://github.com/defunkt/gist.el.git
 [submodule "vendor/textmate.el"]
 	path = vendor/textmate.el
-	url = git://github.com/defunkt/textmate.el
+	url = git://github.com/defunkt/textmate.el.git
