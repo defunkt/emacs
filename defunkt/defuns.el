@@ -118,6 +118,16 @@
   (when (yes-or-no-p "Are you sure you want to Gist this buffer? ") 
     (gist-region-or-buffer private)))
 
+(defun defunkt-todo-done ()
+  (interactive)
+  (save-excursion
+    (move-beginning-of-line 1)
+    (when (string= (char-to-string (char-after)) "[")
+      (forward-char 1)
+      (delete-char 1)
+      (insert "X")))
+  (forward-line))
+
 ;; from http://platypope.org/blog/2007/8/5/a-compendium-of-awesomeness
 ;; I-search with initial contents
 (defvar isearch-initial-string nil)
