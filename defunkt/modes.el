@@ -12,6 +12,7 @@
 
 ; obj-c
 (setq auto-mode-alist (cons '("\\.m" . objc-mode) auto-mode-alist))
+(setq c-default-style "bsd" c-basic-offset 4)
 
 ; magit
 (eval-after-load 'magit
