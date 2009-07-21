@@ -5,6 +5,7 @@
 (load "defunkt/javascript")
 (load "defunkt/erlang")
 (load "defunkt/python")
+(load "defunkt/erc")
 (load "defunkt/private")
 
 ; bash
@@ -53,14 +54,3 @@
 
 ; css
 ;(define-key css-mode-map [tab] 'defunkt-indent)
-
-;;
-;; erc
-;;
-;; channel name in prompt
-(setq erc-prompt (lambda ()
-                   (if (and (boundp 'erc-default-recipients) (erc-default-target))
-                       (erc-propertize (concat (erc-default-target) ">") 'read-only t 'rear-nonsticky t 'front-nonsticky t)
-                     (erc-propertize (concat "ERC>") 'read-only t 'rear-nonsticky t 'front-nonsticky t))))
-
-(setq erc-track-exclude-types '("JOIN" "PART" "QUIT" "NICK" "MODE"))
