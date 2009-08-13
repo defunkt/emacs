@@ -20,7 +20,9 @@ Link[ 'emacs.el', '.emacs' ]
 Link[ '.', '.emacs.d' ]
 
 Git = V do |command, dir|
-  `git --git-dir=#{dir}/.git #{command}`
+  Dir.chdir(dir) do
+    `git #{command}`
+  end
 end
 
 Dir['**/.gitmodules'].each do |d|
