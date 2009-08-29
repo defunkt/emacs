@@ -25,3 +25,4 @@
 (vendor 'textile-mode)
 (vendor 'textmate)
 (textmate-mode)
+(vendor 'yaml-mode)

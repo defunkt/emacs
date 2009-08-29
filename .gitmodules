@@ -19,3 +19,6 @@
 [submodule "vendor/textmate.el"]
 	path = vendor/textmate.el
 	url = git://github.com/defunkt/textmate.el.git
+[submodule "vendor/yaml-mode.el"]
+	path = vendor/yaml-mode.el
+	url = git://github.com/yoshiki/yaml-mode.git
