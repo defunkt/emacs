@@ -54,7 +54,8 @@
 ;(setq ido-enable-flex-matching t)
 
 ; css
-;(define-key css-mode-map [tab] 'defunkt-indent)
+(setq css-mode-indent-depth 2)
+
 
 ; yaml
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
