@@ -137,6 +137,15 @@
             (kill-buffer (car buffers))
             (setq buffers (cdr buffers))))))
 
+(defun defunkt/c-electric-brace (arg)
+  "Inserts a closing curly, too."
+  (interactive "*P")
+  (c-electric-brace arg)
+  (save-excursion
+    (insert "\n")
+    (insert "}")
+    (indent-according-to-mode)))
+
 ;; from http://platypope.org/blog/2007/8/5/a-compendium-of-awesomeness
 ;; I-search with initial contents
 (defvar isearch-initial-string nil)

@@ -67,4 +67,6 @@
 ; c
 (add-hook 'c-mode-hook 
           '(lambda ()
-             (define-key c-mode-map "\C-m" 'newline-and-indent)))
+             (setq c-auto-newline t)
+             (define-key c-mode-map "\C-m" 'newline-and-indent)
+             (define-key c-mode-map "{" 'defunkt/c-electric-brace)))
