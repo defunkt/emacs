@@ -131,7 +131,7 @@
 (defun defunkt-clean-slate ()
   (interactive)
   (let ((buffers (buffer-list)) (safe '("*scratch*")))
-      (while (not (eq nil buffers))
+      (while buffers
         (when (not (member (car buffers) safe))
             (kill-buffer (car buffers))
             (setq buffers (cdr buffers))))))
