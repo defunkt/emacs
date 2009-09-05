@@ -128,6 +128,14 @@
       (insert "X")))
   (forward-line))
 
+(defun defunkt-clean-slate ()
+  (interactive)
+  (let ((buffers (buffer-list)) (safe '("*scratch*")))
+      (while (not (eq nil buffers))
+        (when (not (member (car buffers) safe))
+            (kill-buffer (car buffers))
+            (setq buffers (cdr buffers))))))
+
 ;; from http://platypope.org/blog/2007/8/5/a-compendium-of-awesomeness
 ;; I-search with initial contents
 (defvar isearch-initial-string nil)
