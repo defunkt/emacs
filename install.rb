@@ -25,7 +25,5 @@ Git = V do |command, dir|
   end
 end
 
-Dir['**/.gitmodules'].each do |d|
-  Git[ 'submodule init',   File.dirname(d) ]
-  Git[ 'submodule update', File.dirname(d) ]
-end
+`git submodule update --init`
+`cd vendor/rinari && git submodule update --init`
