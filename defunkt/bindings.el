@@ -30,6 +30,3 @@
 ; no mailing!
 (global-unset-key (kbd "C-x m"))
 (global-unset-key "\C-z")
-
-(add-hook 'css-mode-hook '(lambda ()
-                            (define-key css-mode-map [tab] 'defunkt-indent)))
