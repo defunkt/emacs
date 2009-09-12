@@ -15,6 +15,7 @@
 (load "defunkt/temp_files")
 (load "defunkt/github")
 (load "defunkt/git")
+
 (when (file-exists-p "defunkt/private") 
   (load "defunkt/private"))
 
