@@ -2,7 +2,7 @@
   (interactive)
   (insert "  "))
 
-(defun defunkt-indent () 
+(defun defunkt-indent ()
   (interactive)
   (insert "  "))
 
@@ -34,8 +34,8 @@
   (interactive "p")
 
   (let ((whitespace-regexp "\\s-+"))
-    (kill-region (point) 
-                 (cond 
+    (kill-region (point)
+                 (cond
                   ((looking-at whitespace-regexp) (re-search-forward whitespace-regexp) (point))
                   ((looking-at "\n") (kill-line) (defunkt-kill-word arg))
                   (t (forward-word arg) (point))))))
@@ -62,7 +62,7 @@
 ;(add-hook 'find-file-hook 'defunkt-shebang-to-mode)
 
 ; duplicate the current line
-(defun defunkt-duplicate-line () 
+(defun defunkt-duplicate-line ()
   (interactive)
     (beginning-of-line)
     (copy-region-as-kill (point) (progn (end-of-line) (point)))
@@ -73,11 +73,11 @@
 
 ; for loading libraries in from the vendor directory
 (defun vendor (library)
-  (let* ((file (symbol-name library)) 
-         (normal (concat "~/.emacs.d/vendor/" file)) 
+  (let* ((file (symbol-name library))
+         (normal (concat "~/.emacs.d/vendor/" file))
          (suffix (concat normal ".el"))
          (defunkt (concat "~/.emacs.d/defunkt/" file)))
-    (cond 
+    (cond
      ((file-directory-p normal) (add-to-list 'load-path normal) (require library))
      ((file-directory-p suffix) (add-to-list 'load-path suffix) (require library))
      ((file-exists-p suffix) (require library)))
@@ -115,36 +115,26 @@
 
 (defun gist-buffer-confirm (&optional private)
   (interactive "P")
-  (when (yes-or-no-p "Are you sure you want to Gist this buffer? ") 
+  (when (yes-or-no-p "Are you sure you want to Gist this buffer? ")
     (gist-region-or-buffer private)))
 
-(defun defunkt-todo-done ()
-  (interactive)
-  (save-excursion
-    (move-beginning-of-line 1)
-    (when (string= (char-to-string (char-after)) "[")
-      (forward-char 1)
-      (delete-char 1)
-      (insert "X")))
-  (forward-line))
-
-(defun defunkt-clean-slate ()
-  "Kills all buffers except *scratch*"
-  (interactive)
-  (let ((buffers (buffer-list)) (safe '("*scratch*")))
+  (defun defunkt-clean-slate ()
+    "Kills all buffers except *scratch*"
+    (interactive)
+    (let ((buffers (buffer-list)) (safe '("*scratch*")))
       (while buffers
         (when (not (member (car buffers) safe))
-            (kill-buffer (car buffers))
-            (setq buffers (cdr buffers))))))
+          (kill-buffer (car buffers))
+          (setq buffers (cdr buffers))))))
 
-(defun defunkt/c-electric-brace (arg)
-  "Inserts a closing curly, too."
-  (interactive "*P")
-  (c-electric-brace arg)
-  (save-excursion
-    (insert "\n")
-    (insert "}")
-    (indent-according-to-mode)))
+  (defun defunkt/c-electric-brace (arg)
+    "Inserts a closing curly, too."
+    (interactive "*P")
+    (c-electric-brace arg)
+    (save-excursion
+      (insert "\n")
+      (insert "}")
+      (indent-according-to-mode)))
 
 ;; from http://platypope.org/blog/2007/8/5/a-compendium-of-awesomeness
 ;; I-search with initial contents
