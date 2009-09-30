@@ -11,12 +11,17 @@
 (global-set-key [C-return] 'defunkt-duplicate-line)
 (global-set-key "\C-x\C-g" 'github-ido-find-file)
 (global-set-key "\C-R" 'replace-string)
-(global-set-key [M-return] 'defunkt-todo-done)
+
+; todo
+(global-set-key [M-return] 'defunkt-todo-toggle)
+(global-set-key "\C-xt" 'defunkt-todo-quick-enter)
+(global-set-key [M-down] 'defunkt-todo-move-item-down)
+(global-set-key [M-up] 'defunkt-todo-move-item-up)
 
 ; vim emulation
 (global-set-key [C-tab] 'other-window) 
-(global-set-key [M-up] 'defunkt-inc-num-at-point)
-(global-set-key [M-down] 'defunkt-dec-num-at-point)
+;; (global-set-key [M-up] 'defunkt-inc-num-at-point)
+;; (global-set-key [M-down] 'defunkt-dec-num-at-point)
 (global-set-key (kbd "C-*") 'isearch-forward-at-point)
 (global-set-key [remap kill-word] 'defunkt-kill-word)
 (global-set-key [remap backward-kill-word] 'defunkt-backward-kill-word)
