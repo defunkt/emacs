@@ -68,7 +68,7 @@
 
 
 ; c
-(add-hook 'c-mode-hook 
+(add-hook 'c-mode-hook
           '(lambda ()
              (setq c-auto-newline t)
              (define-key c-mode-map "{" 'defunkt/c-electric-brace)))
