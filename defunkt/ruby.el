@@ -61,7 +61,7 @@
   "Returns `t' if the current line is a Ruby comment."
   (save-excursion
     (beginning-of-line)
-    (search-forward "# " (point-at-eol) t)))
+    (search-forward "#" (point-at-eol) t)))
 
 ; treetop
 (vendor 'treetop)
