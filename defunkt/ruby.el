@@ -1,7 +1,7 @@
 ; rinari
 (vendor 'rinari)
 (setq rinari-tags-file-name "TAGS")
-(add-hook 'rinari-minor-mode-hook 
+(add-hook 'rinari-minor-mode-hook
           (lambda ()
             (define-key rinari-minor-mode-map (kbd "A-r") 'rinari-test)))
 
@@ -15,6 +15,7 @@
 (setq auto-mode-alist (cons '("Capfile" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.rake" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.god" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.ru" . ruby-mode) auto-mode-alist))
 
 ;; no warnings when compiling
 (setq ruby-dbg-flags "")
