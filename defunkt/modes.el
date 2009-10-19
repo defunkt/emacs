@@ -5,6 +5,7 @@
 (load "defunkt/javascript")
 (load "defunkt/erlang")
 (load "defunkt/python")
+(load "defunkt/sgml")
 (load "defunkt/erc")
 
 ;; all modes
