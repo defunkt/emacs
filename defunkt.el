@@ -30,3 +30,4 @@
 (vendor 'textmate)
 (textmate-mode)
 (vendor 'yaml-mode)
+(vendor 'tpl-mode)
