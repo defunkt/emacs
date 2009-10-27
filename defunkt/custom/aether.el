@@ -16,6 +16,7 @@
  '(js2-enter-indents-newline t)
  '(js2-strict-missing-semi-warning nil)
  '(show-paren-mode nil)
+ '(standard-indent 2)
  '(tabbar-mode nil nil (tabbar))
  '(transient-mark-mode t))
 (custom-set-faces
