@@ -1,6 +1,9 @@
 ;;; tpl-mode.el -- a major mode for editing Google CTemplate files.
 ;;; By Tony Gentilcore, July 2006
 ;;;
+;;; Very minor, backwards compatible changes added for Mustache compatibility
+;;; by Chris Wanstrath, October 2009
+;;;
 ;;; TO USE:
 ;;; 1) Copy this file somewhere you in emacs load-path.  To see what
 ;;;    your load-path is, run inside emacs: C-h v load-path<RET>
