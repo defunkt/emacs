@@ -41,8 +41,7 @@
 
 (defcustom tpl-mode-hook nil
   "*Hook that runs upon entering tpl-mode."
-  :type 'hook
-  )
+  :type 'hook)
 
 (defvar tpl-mode-map nil
   "Keymap for tpl-mode major mode")
