@@ -52,6 +52,9 @@
 
 (define-key tpl-mode-map "\t" 'tpl-indent-command)
 (define-key tpl-mode-map "\C-m" 'newline-and-indent)
+(define-key tpl-mode-map "\C-ct" 'tpl-insert-tag)
+(define-key tpl-mode-map "\C-cv" 'tpl-insert-variable)
+(define-key tpl-mode-map "\C-cs" 'tpl-insert-section)
 
 
 (defvar tpl-mode-syntax-table nil
@@ -145,6 +148,34 @@
 (defun tpl-indent-command ()
   "Command for indenting text. Just calls tpl-indent."
   (interactive)
+  (tpl-indent))
+
+(defun tpl-insert-tag (tag)
+  "Inserts an HTML tag."
+  (interactive "sTag: ")
+  (tpl-indent)
+  (insert (concat "<" tag ">"))
+  (insert "\n\n")
+  (insert (concat "</" tag ">"))
+  (tpl-indent)
+  (forward-line -1)
+  (tpl-indent))
+
+(defun tpl-insert-variable (variable)
+  "Inserts a tpl variable."
+  (interactive "sVariable: ")
+  (insert (concat "{{" variable "}}")))
+
+(defun tpl-insert-section (section)
+  "Inserts a tpl section."
+  (interactive "sSection: ")
+  (insert (concat "{{#" section "}}"))
+  (tpl-indent)
+  (forward-line 1)
+  (insert "\n")
+  (insert (concat "{{/" section "}}"))
+  (tpl-indent)
+  (forward-line -1)
   (tpl-indent))
 
 ;; Function to control indenting.
