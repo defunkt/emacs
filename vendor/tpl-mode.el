@@ -25,10 +25,10 @@
   (require 'font-lock))
 
 (defgroup tpl-mode nil
-  "Major mode for editing Google CTemplate files"
+  "Major mode for editing Google CTemplate and Mustache files"
   :group 'languages)
 
-(defvar tpl-mode-version "1.0"
+(defvar tpl-mode-version "1.1"
   "Version of `tpl-mode.el'.")
 
 (defvar tpl-mode-abbrev-table nil
@@ -46,8 +46,7 @@
 
 (if tpl-mode-map
     nil
-  (setq tpl-mode-map (make-sparse-keymap))
-  )
+  (setq tpl-mode-map (make-sparse-keymap)))
 
 (define-key tpl-mode-map "\t" 'tpl-indent-command)
 (define-key tpl-mode-map "\C-m" 'newline-and-indent)
