@@ -64,31 +64,30 @@
   (modify-syntax-entry ?>  ")<  " tpl-mode-syntax-table)
   (modify-syntax-entry ?\" ".   " tpl-mode-syntax-table)
   (modify-syntax-entry ?\\ ".   " tpl-mode-syntax-table)
-  (modify-syntax-entry ?'  "w   " tpl-mode-syntax-table)
-  )
+  (modify-syntax-entry ?'  "w   " tpl-mode-syntax-table))
 
 (defvar tpl-basic-offset 2
   "The basic indentation offset.")
 
 ;; Constant regular expressions to identify template elements.
-(defconst tpl-mode-tpl-token "[a-zA-Z][a-zA-Z0-9_:=\-]*?")
+(defconst tpl-mode-tpl-token "[a-zA-Z][a-zA-Z0-9_:=\?!-]*?")
 (defconst tpl-mode-section (concat "\\({{[#/]\s*"
-				   tpl-mode-tpl-token
-				   "\s*}}\\)"))
+                                   tpl-mode-tpl-token
+                                   "\s*}}\\)"))
 (defconst tpl-mode-open-section (concat "\\({{#\s*"
-					tpl-mode-tpl-token
-					"\s*}}\\)"))
+                                        tpl-mode-tpl-token
+                                        "\s*}}\\)"))
 (defconst tpl-mode-close-section (concat "{{/\\(\s*"
-					 tpl-mode-tpl-token
-					 "\s*\\)}}"))
+                                         tpl-mode-tpl-token
+                                         "\s*\\)}}"))
 ;; TODO(tonyg) Figure out a way to support multiline comments.
 (defconst tpl-mode-comment "\\({{!.*?}}\\)")
 (defconst tpl-mode-include (concat "\\({{>\s*"
-				   tpl-mode-tpl-token
-				   "\s*}}\\)"))
+                                   tpl-mode-tpl-token
+                                   "\s*}}\\)"))
 (defconst tpl-mode-variable (concat "\\({{\s*"
-				    tpl-mode-tpl-token
-				    "\s*}}\\)"))
+                                    tpl-mode-tpl-token
+                                    "\s*}}\\)"))
 (defconst tpl-mode-builtins
   (concat
    "\\({{\\<\s*"
@@ -97,7 +96,7 @@
     t)
    "\s*\\>}}\\)"))
 (defconst tpl-mode-close-section-at-start (concat "^[ \t]*?"
-						  tpl-mode-close-section))
+                                                  tpl-mode-close-section))
 
 ;; Constant regular expressions to identify html tags.
 ;; Taken from HTML 4.01 / XHTML 1.0 Reference found at:
@@ -127,20 +126,20 @@
     t)
    "\\>"))
 (defconst tpl-mode-open-tag (concat "<\\("
-				    tpl-mode-pair-tag
-				    "\\)"))
+                                    tpl-mode-pair-tag
+                                    "\\)"))
 (defconst tpl-mode-close-tag (concat "</\\("
-				     tpl-mode-pair-tag
-				     "\\)>"))
+                                     tpl-mode-pair-tag
+                                     "\\)>"))
 (defconst tpl-mode-close-tag-at-start (concat "^[ \t]*?"
-					      tpl-mode-close-tag))
+                                              tpl-mode-close-tag))
 
 (defconst tpl-mode-blank-line "^[ \t]*?$")
 (defconst tpl-mode-dangling-open (concat "\\("
-					 tpl-mode-open-section
-					 "\\)\\|\\("
-					 tpl-mode-open-tag
-					 "\\)[^/]*$"))
+                                         tpl-mode-open-section
+                                         "\\)\\|\\("
+                                         tpl-mode-open-tag
+                                         "\\)[^/]*$"))
 
 (defun tpl-indent-command ()
   "Command for indenting text. Just calls tpl-indent."
@@ -156,68 +155,51 @@
   (if (bobp)
       (indent-line-to 0)
     (let ((tag-stack 1) (close-tag "") (cur-indent 0) (old-pnt (point-marker))
-	  (close-at-start) (open-token) (dangling-open))
+          (close-at-start) (open-token) (dangling-open))
       (progn
-	;; Determine if this is a template line or an html line.
-	(if (looking-at "^[ \t]*?{{")
-	    (setq close-at-start tpl-mode-close-section-at-start
-		  open-token "{{#")
-	  (setq close-at-start tpl-mode-close-tag-at-start
-		open-token "<")
-	  )
-	;; If there is a closing tag at the start of the line, search back
-	;; for its opener and indent to that level.
-	(if (looking-at close-at-start)
-	    (progn
-	      (save-excursion
-		(setq close-tag (match-string 1))
-		;; Keep searching for a match for the close tag until
-		;; the tag-stack is 0.
-		(while (and (not (bobp))
-			    (> tag-stack 0)
-			    (re-search-backward (concat open-token
-							"\\(/?\\)"
-							close-tag) nil t))
-		  (if (string-equal (match-string 1) "/")
-		      ;; We found another close tag, so increment tag-stack.
-		      (setq tag-stack (+ tag-stack 1))
-		    ;; We found an open tag, so decrement tag-stack.
-		    (setq tag-stack (- tag-stack 1))
-		    )
-		  (setq cur-indent (current-indentation))
-		  )
-		)
-	      (if (> tag-stack 0)
-		  (save-excursion
-		    (forward-line -1)
-		    (setq cur-indent (current-indentation))
-		    )
-		)
-	      )
-	  ;; This was not a closing tag, so we check if the previous line
-	  ;; was an opening tag.
-	  (save-excursion
-	    ;; Keep moving back until we find a line that is not blank
-	    (while (progn
-		     (forward-line -1)
-		     (and (not (bobp)) (looking-at tpl-mode-blank-line))
-		     )
-	      )
-	    (setq cur-indent (current-indentation))
-	    (if (re-search-forward tpl-mode-dangling-open old-pnt t)
-		(setq cur-indent (+ cur-indent tpl-basic-offset))
-	      )
-	    )
-	  )
-	;; Finally, we execute the actual indentation.
-	(if (> cur-indent 0)
-	    (indent-line-to cur-indent)
-	  (indent-line-to 0)
-	  )
-	)
-      )
-    )
-  )
+        ;; Determine if this is a template line or an html line.
+        (if (looking-at "^[ \t]*?{{")
+            (setq close-at-start tpl-mode-close-section-at-start
+                  open-token "{{#")
+          (setq close-at-start tpl-mode-close-tag-at-start
+                open-token "<"))
+        ;; If there is a closing tag at the start of the line, search back
+        ;; for its opener and indent to that level.
+        (if (looking-at close-at-start)
+            (progn
+              (save-excursion
+                (setq close-tag (match-string 1))
+                ;; Keep searching for a match for the close tag until
+                ;; the tag-stack is 0.
+                (while (and (not (bobp))
+                            (> tag-stack 0)
+                            (re-search-backward (concat open-token
+                                                        "\\(/?\\)"
+                                                        close-tag) nil t))
+                  (if (string-equal (match-string 1) "/")
+                      ;; We found another close tag, so increment tag-stack.
+                      (setq tag-stack (+ tag-stack 1))
+                    ;; We found an open tag, so decrement tag-stack.
+                    (setq tag-stack (- tag-stack 1)))
+                  (setq cur-indent (current-indentation))))
+              (if (> tag-stack 0)
+                  (save-excursion
+                    (forward-line -1)
+                    (setq cur-indent (current-indentation)))))
+          ;; This was not a closing tag, so we check if the previous line
+          ;; was an opening tag.
+          (save-excursion
+            ;; Keep moving back until we find a line that is not blank
+            (while (progn
+                     (forward-line -1)
+                     (and (not (bobp)) (looking-at tpl-mode-blank-line))))
+            (setq cur-indent (current-indentation))
+            (if (re-search-forward tpl-mode-dangling-open old-pnt t)
+                (setq cur-indent (+ cur-indent tpl-basic-offset)))))
+        ;; Finally, we execute the actual indentation.
+        (if (> cur-indent 0)
+            (indent-line-to cur-indent)
+          (indent-line-to 0))))))
 
 ;; controls highlighting
 (defconst tpl-mode-font-lock-keywords
@@ -237,8 +219,7 @@
    (list (concat "<\\(" tpl-mode-standalone-tag "\\)")
          '(1 font-lock-function-name-face))
    (list tpl-mode-html-constant
-         '(1 font-lock-variable-name-face))
-   ))
+         '(1 font-lock-variable-name-face))))
 
 (put 'tpl-mode 'font-lock-defaults '(tpl-font-lock-keywords nil t))
 
@@ -252,12 +233,11 @@
   (setq local-abbrev-table tpl-mode-abbrev-table)
   (setq indent-tabs-mode nil)
   (set-syntax-table tpl-mode-syntax-table)
-  ; show trailing whitespace, but only when the user can fix it
+  ;; show trailing whitespace, but only when the user can fix it
   (setq show-trailing-whitespace (not buffer-read-only))
   (make-local-variable 'indent-line-function)
   (setq indent-line-function 'tpl-indent)
   (setq font-lock-defaults '(tpl-mode-font-lock-keywords))
-  (run-hooks 'tpl-mode-hook)
-)
+  (run-hooks 'tpl-mode-hook))
 
 (provide 'tpl-mode)
