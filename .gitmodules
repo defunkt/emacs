@@ -22,3 +22,6 @@
 [submodule "vendor/yaml-mode.el"]
 	path = vendor/yaml-mode.el
 	url = git://github.com/yoshiki/yaml-mode.git
+[submodule "vendor/open-file-in-github"]
+	path = vendor/open-file-in-github
+	url = git://gist.github.com/170861.git

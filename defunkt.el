@@ -31,3 +31,4 @@
 (textmate-mode)
 (vendor 'yaml-mode)
 (vendor 'tpl-mode)
+(vendor 'open-file-in-github)
