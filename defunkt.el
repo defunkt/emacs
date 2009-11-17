@@ -32,3 +32,4 @@
 (vendor 'yaml-mode)
 (vendor 'tpl-mode)
 (vendor 'open-file-in-github)
+(vendor 'ooc-mode)
