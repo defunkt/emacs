@@ -7,6 +7,7 @@
 (load "defunkt/python")
 (load "defunkt/sgml")
 (load "defunkt/erc")
+(load "defunkt/artist")
 
 ;; all modes
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
