@@ -25,6 +25,7 @@
 ;; (global-set-key [M-down] 'defunkt-dec-num-at-point)
 (global-set-key (kbd "C-*") 'isearch-forward-at-point)
 (global-set-key [remap kill-word] 'defunkt-kill-word)
+(global-set-key (kbd "C-S-k") 'defunkt-backward-kill-line)
 (global-set-key [remap backward-kill-word] 'defunkt-backward-kill-word)
 (global-set-key [remap aquamacs-backward-kill-word] 'defunkt-backward-kill-word)
 

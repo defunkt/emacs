@@ -84,6 +84,10 @@
     (when (file-exists-p (concat defunkt ".el"))
       (load defunkt))))
 
+(defun defunkt-backward-kill-line ()
+  (interactive)
+  (kill-line 0))
+
 (require 'thingatpt)
 (defun defunkt-change-num-at-point (fn)
   (let* ((num (string-to-number (thing-at-point 'word)))
