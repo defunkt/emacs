@@ -17,7 +17,7 @@
 (defun js2-execute-line ()
   (interactive)
   (save-excursion
-    (call-process-region (point-at-bol) 
+    (call-process-region (point-at-bol)
                          (point-at-eol)
                          "johnson"
                          nil
@@ -28,8 +28,9 @@
       (message (buffer-string))
       (kill-buffer nil))))
 
-(add-hook 'js2-mode-hook 
+(add-hook 'js2-mode-hook
           '(lambda ()
+             (add-hook 'before-save-hook 'delete-trailing-whitespace)
              (define-key js2-mode-map (kbd "A-r") 'js2-execute-buffer)
              (define-key js2-mode-map (kbd "A-R") 'js2-execute-line)
              (define-key js2-mode-map "\C-L" 'js2-insert-console)

@@ -15,6 +15,7 @@
  '(js2-bounce-indent-flag t)
  '(js2-enter-indents-newline t)
  '(js2-strict-missing-semi-warning nil)
+ '(python-honour-comment-indentation nil)
  '(ruby-deep-arglist nil)
  '(ruby-deep-indent-paren nil)
  '(ruby-deep-indent-paren-style nil)
