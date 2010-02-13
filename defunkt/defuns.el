@@ -12,6 +12,11 @@
   (backward-char))
 (ad-activate 'zap-to-char)
 
+(defun word-count ()
+  "Count words in buffer"
+  (interactive)
+  (shell-command-on-region (point-min) (point-max) "wc -w"))
+
 (defun defunkt-ido-find-config ()
   (interactive)
   (find-file

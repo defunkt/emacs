@@ -11,6 +11,7 @@
 (global-set-key [C-return] 'defunkt-duplicate-line)
 (global-set-key "\C-x\C-g" 'github-ido-find-file)
 (global-set-key "\C-R" 'replace-string)
+(global-set-key (kbd "C-S-N") 'word-count)
 (global-set-key (kbd "A-F") 'ack)
 
 ; todo
