@@ -83,3 +83,8 @@
 (add-hook 'tpl-mode-hook '(lambda () (font-lock-mode 1)))
 
 (setq show-trailing-whitespace (not buffer-read-only))
+
+;; textmate
+(vendor 'textmate)
+(textmate-mode)
+(setq textmate-find-files-command "git ls-tree --name-only -r master")
