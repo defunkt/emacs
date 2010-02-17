@@ -87,4 +87,4 @@
 ;; textmate
 (vendor 'textmate)
 (textmate-mode)
-(setq textmate-find-files-command "git ls-tree --name-only -r master")
+(setq textmate-find-files-command "git ls-tree --name-only -r HEAD")
