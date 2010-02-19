@@ -20,8 +20,19 @@
 (defun defunkt-ido-find-config ()
   (interactive)
   (find-file
-   (concat "~/.emacs.d/defunkt/" (ido-completing-read "Config file: "
-                                   (directory-files "~/.emacs.d/defunkt/" nil "^[^.]")))))
+   (concat "~/.emacs.d/defunkt/"
+           (ido-completing-read "Config file: "
+                                (directory-files "~/.emacs.d/defunkt/"
+                                                 nil
+                                                 "^[^.]")))))
+
+(defun defunkt-delete-till-end-of-buffer ()
+  "Deletes all text from mark until `end-of-buffer'."
+  (interactive)
+  (save-excursion
+    (let ((beg (point)))
+      (end-of-buffer)
+      (delete-region beg (point)))))
 
 (defun defunkt-ido-find-project ()
   (interactive)
