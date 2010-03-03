@@ -12,7 +12,7 @@
 
 (defun defunkt-erc-update-topic (parsed)
   (interactive)
-  
+
   (if (get-buffer (erc-response.contents parsed))
       (with-current-buffer (erc-response.contents parsed)
         (if (hash-table-p erc-channel-users)
@@ -20,9 +20,13 @@
                    (erc-mode-line-format (concat "%t (%n) " users)))
               (erc-update-mode-line-buffer (current-buffer)))))))
 
-;; (add-hook 'erc-server-JOIN-functions 
+;; (add-hook 'erc-server-JOIN-functions
 ;;           (lambda (PROC parsed)
 ;;             (defunkt-erc-update-topic parsed)))
-;; (add-hook 'erc-server-PART-functions 
+;; (add-hook 'erc-server-PART-functions
 ;;           (lambda (PROC parsed)
 ;;             (defunkt-erc-update-topic parsed)))
+
+(setq erc-autojoin-channels-alist
+      '(("freenode.net" "#github" "#logicalawesome" "#rip"
+         "#resque" "#mustache" "#sinatra" "#redis" "#coffeescript")))
