@@ -8,6 +8,7 @@
 (load "defunkt/sgml")
 (load "defunkt/erc")
 (load "defunkt/artist")
+(load "defunkt/coffee")
 
 ;; all modes
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
