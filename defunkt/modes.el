@@ -59,10 +59,6 @@
  "Command to kill a compilation launched by `mode-compile'" t)
 (global-set-key "\C-ck" 'mode-compile-kill)
 
-; ido
-;(ido-mode t)
-;(setq ido-enable-flex-matching t)
-
 ; css
 (setq css-mode-indent-depth 2)
 (add-hook 'css-mode-hook '(lambda ()
@@ -82,7 +78,10 @@
              (setq c-auto-newline t)
              (define-key c-mode-map "{" 'defunkt/c-electric-brace)))
 
-; mustache
+;; mustache
+(add-to-list 'auto-mode-alist '("\\.mustache$" . tpl-mode))
+
+;; textmate.el
 (vendor 'textmate)
 (textmate-mode)
 (setq textmate-find-files-command "git ls-tree --full-tree --name-only -r HEAD")
