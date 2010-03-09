@@ -30,10 +30,16 @@
 (global-set-key [remap backward-kill-word] 'defunkt-backward-kill-word)
 (global-set-key [remap aquamacs-backward-kill-word] 'defunkt-backward-kill-word)
 
-; no printing!
+;; no printing!
+;; no changing meta key!!
 (when (boundp 'osx-key-mode-map)
- (define-key osx-key-mode-map (kbd "A-p")
-   '(lambda () (interactive) (message "noop"))))
+  ;; Option is my meta key.
+  (define-key osx-key-mode-map (kbd "A-;")
+    '(lambda () (interactive) (message "noop")))
+
+  ;; What's paper?
+  (define-key osx-key-mode-map (kbd "A-p")
+    '(lambda () (interactive) (message "noop"))))
 
 ; no mailing!
 (global-unset-key (kbd "C-x m"))
