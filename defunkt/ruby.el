@@ -16,6 +16,7 @@
 (setq auto-mode-alist (cons '("\\.rake" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.god" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.ru" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.gemspec" . ruby-mode) auto-mode-alist))
 
 ;; no warnings when compiling
 (setq ruby-dbg-flags "")
