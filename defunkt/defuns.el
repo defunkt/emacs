@@ -6,11 +6,18 @@
   (interactive)
   (insert "  "))
 
-(defadvice zap-to-char (after dont-zap-char (arg char))
-  "Doesn't include the char - zaps to the char before it (like vim)."
-  (insert char)
-  (backward-char))
-(ad-activate 'zap-to-char)
+(defun defunkt-zap-to-char (arg char)
+  "Kill up to but excluding ARG'th occurrence of CHAR.
+Case is ignored if `case-fold-search' is non-nil in the current buffer.
+Goes backward if ARG is negative; error if CHAR not found.
+This emulates Vim's `dt` behavior, which rocks."
+  (interactive "p\ncZap to char: ")
+  (if (char-table-p translation-table-for-input)
+      (setq char (or (aref translation-table-for-input char) char)))
+  (kill-region (point)
+               (progn
+                 (search-forward (char-to-string char) nil nil arg)
+                 (- (point) 1))))
 
 (defun word-count ()
   "Count words in buffer"

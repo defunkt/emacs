@@ -5,6 +5,7 @@
 (global-set-key "\C-c\C-g" 'gist-buffer-confirm)
 (global-set-key "\C-xg" 'magit-status)
 (global-set-key "\M-i" 'insert-soft-tab)
+(global-set-key "\M-z" 'defunkt-zap-to-char)
 (global-set-key "\C-xp" 'defunkt-ido-find-project)
 (global-set-key "\C-cp" 'defunkt-ido-find-config)
 (global-set-key "\C-cP" 'defunkt-goto-config)
