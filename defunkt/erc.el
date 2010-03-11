@@ -29,5 +29,5 @@
 
 (setq erc-autojoin-channels-alist
       '(("freenode.net" "#github" "#logicalawesome" "#rip"
-         "#resque" "#mustache" "#sinatra" "#redis" "#coffeescript"
-         "#thechangelog")))
+         "#resque" "#{" "#sinatra" "#redis" "#coffeescript"
+         "#thechangelog" )))
