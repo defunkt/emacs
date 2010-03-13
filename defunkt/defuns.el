@@ -17,7 +17,8 @@ This emulates Vim's `dt` behavior, which rocks."
   (kill-region (point)
                (progn
                  (search-forward (char-to-string char) nil nil arg)
-                 (- (point) 1))))
+                 (- (point) 1)))
+  (backward-char 1))
 
 (defun word-count ()
   "Count words in buffer"
