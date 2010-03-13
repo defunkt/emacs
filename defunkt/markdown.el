@@ -4,9 +4,10 @@
 
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.ron" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.ronn" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.ronn?" . markdown-mode) auto-mode-alist))
 
+
+;; Not ready.
 (defun defunkt-markdown-insert-link ()
   "Inserts an awesome link: [Word][ref] with [ref]: url at the
 bottom. Prompts you, for sure."
@@ -14,10 +15,7 @@ bottom. Prompts you, for sure."
   (insert "[")
   (save-excursion
     (insert "]")
-    (insert "[]")
-
-)
-)
+    (insert "[]")))
 
 (add-hook
  'markdown-mode-hook

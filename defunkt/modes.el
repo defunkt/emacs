@@ -21,7 +21,7 @@
 (setq auto-mode-alist (cons '("\\.bashrc" . sh-mode) auto-mode-alist))
 
 ; obj-c
-(setq auto-mode-alist (cons '("\\.m" . objc-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.m$" . objc-mode) auto-mode-alist))
 ;; (setq c-default-style "bsd" c-basic-offset 2)
 
 ; magit
