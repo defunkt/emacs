@@ -5,7 +5,7 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(aquamacs-additional-fontsets nil t)
- '(aquamacs-customization-version-id 182 t)
+ '(aquamacs-customization-version-id 190 t)
  '(cua-mode nil nil (cua-base))
  '(default-frame-alist (quote ((tool-bar-lines . 0) (foreground-color . "white") (background-color . "black") (menu-bar-lines . 1) (font . "-apple-inconsolata-medium-r-normal--20-150-72-72-m-150-iso10646-1"))))
  '(erc-modules (quote (autojoin button completion fill irccontrols match menu netsplit noncommands readonly ring scrolltobottom stamp track)))
@@ -22,6 +22,7 @@
  '(show-paren-mode nil)
  '(standard-indent 2)
  '(tabbar-mode nil nil (tabbar))
+ '(text-mode-hook (quote (smart-spacing-mode)))
  '(transient-mark-mode t))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
