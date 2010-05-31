@@ -6,6 +6,16 @@
   (interactive)
   (insert "  "))
 
+(defun mustache ()
+  (interactive)
+  (tpl-mode)
+  (setq truncate-lines t))
+
+(defun email ()
+  (interactive)
+  (markdown-mode)
+  (turn-on-word-wrap))
+
 (defun defunkt-zap-to-char (arg char)
   "Kill up to but excluding ARG'th occurrence of CHAR.
 Case is ignored if `case-fold-search' is non-nil in the current buffer.

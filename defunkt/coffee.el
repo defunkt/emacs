@@ -5,7 +5,7 @@
   (add-hook 'before-save-hook
             '(lambda ()
                (when (not (string= (buffer-name) "Cakefile"))
-                 (shell-command "bin/compile"))))
+                 (shell-command "cake build"))))
 
   ;; I like debug mode, sometimes.
   (setq coffee-debug-mode nil))
