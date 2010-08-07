@@ -10,6 +10,7 @@
 (load "defunkt/artist")
 (load "defunkt/coffee")
 (load "defunkt/markdown")
+(load "defunkt/css")
 
 ;; all modes
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -47,11 +48,6 @@
 (autoload 'mode-compile-kill "mode-compile"
  "Command to kill a compilation launched by `mode-compile'" t)
 (global-set-key "\C-ck" 'mode-compile-kill)
-
-; css
-(setq css-mode-indent-depth 2)
-(add-hook 'css-mode-hook '(lambda ()
-                            (define-key css-mode-map [tab] 'defunkt-indent)))
 
 
 ; yaml
