@@ -164,15 +164,15 @@
 (defun tpl-insert-variable (variable)
   "Inserts a tpl variable."
   (interactive "sVariable: ")
-  (insert (concat "{{" variable "}}")))
+  (insert (concat "{{ " variable " }}")))
 
 (defun tpl-insert-section (section)
   "Inserts a tpl section."
   (interactive "sSection: ")
   (tpl-indent)
-  (insert (concat "{{#" section "}}\n"))
+  (insert (concat "{{# " section "}}\n"))
   (insert "\n")
-  (insert (concat "{{/" section "}}"))
+  (insert (concat "{{/ " section "}}"))
   (tpl-indent)
   (forward-line -1)
   (tpl-indent))
