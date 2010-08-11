@@ -4,3 +4,5 @@ url/*
 local.el
 *.elc
 private.el
+*CVS*
+.cvsignore
