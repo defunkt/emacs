@@ -2,7 +2,7 @@
 
 ; custom place to save customizations
 (setq custom-file "~/.emacs.d/defunkt/custom.el")
-(load custom-file)
+(when (file-exists-p custom-file) (load custom-file))
 
 (when (file-exists-p ".passwords") (load ".passwords"))
 
