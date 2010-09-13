@@ -3,7 +3,6 @@
 ; custom place to save customizations
 (setq custom-file "~/.emacs.d/defunkt/custom.el")
 (when (file-exists-p custom-file) (load custom-file))
-
 (when (file-exists-p ".passwords") (load ".passwords"))
 
 (load "defunkt/lisp")
@@ -34,3 +33,8 @@
 (vendor 'ooc-mode)
 (vendor 'coffee-mode)
 (vendor 'clojure-mode)
+
+
+; org-mode
+(add-to-list 'load-path "~/.emacs.d/vendor/org-mode/lisp" "~/.emacs.d/vendor/org-mode/contrib/lisp")
+(require 'org-install)
