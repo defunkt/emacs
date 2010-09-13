@@ -18,6 +18,7 @@
 (load "defunkt/git")
 (load "defunkt/todo")
 (load "defunkt/coffee")
+(load "defunkt/org-mode")
 
 (when (file-exists-p "defunkt/private")
   (load "defunkt/private"))
@@ -35,8 +36,3 @@
 (vendor 'ooc-mode)
 (vendor 'coffee-mode)
 (vendor 'clojure-mode)
-
-
-; org-mode
-(add-to-list 'load-path "~/.emacs.d/vendor/org-mode/lisp" "~/.emacs.d/vendor/org-mode/contrib/lisp")
-(require 'org-install)

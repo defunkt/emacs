@@ -1,0 +1,6 @@
+(add-to-list 'load-path "~/.emacs.d/vendor/org-mode/lisp" "~/.emacs.d/vendor/org-mode/contrib/lisp")
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-font-lock-mode 1)
+(require 'org-install)
