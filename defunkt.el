@@ -16,6 +16,7 @@
 (load "defunkt/github")
 (load "defunkt/git")
 (load "defunkt/todo")
+(load "defunkt/coffee")
 
 (when (file-exists-p "defunkt/private")
   (load "defunkt/private"))
@@ -32,3 +33,4 @@
 (vendor 'open-file-in-github)
 (vendor 'ooc-mode)
 (vendor 'coffee-mode)
+(vendor 'clojure-mode)

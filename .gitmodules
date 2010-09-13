@@ -28,3 +28,12 @@
 [submodule "vendor/markdown-mode"]
 	path = vendor/markdown-mode
 	url = git://github.com/defunkt/markdown-mode.git
+[submodule "clojure-mode"]
+	path = clojure-mode
+	url = git://github.com/jochu/clojure-mode.git
+[submodule "vendor/clojure-mode"]
+	path = vendor/clojure-mode
+	url = git://github.com/jochu/clojure-mode.git
+[submodule "vendor/org-mode"]
+	path = vendor/org-mode
+	url = git://repo.or.cz/org-mode.git
