@@ -18,6 +18,7 @@
 (load "defunkt/todo")
 (load "defunkt/coffee")
 (load "defunkt/org-mode")
+(load "defunkt/slime")
 
 (when (file-exists-p "defunkt/private")
   (load "defunkt/private"))
@@ -35,5 +36,3 @@
 (vendor 'ooc-mode)
 (vendor 'coffee-mode)
 (vendor 'clojure-mode)
-
-(slime-setup '(slime-repl))
