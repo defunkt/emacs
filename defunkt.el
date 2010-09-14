@@ -32,3 +32,6 @@
 (vendor 'open-file-in-github)
 (vendor 'ooc-mode)
 (vendor 'coffee-mode)
+(vendor 'clojure-mode)
+
+(slime-setup '(slime-repl))
