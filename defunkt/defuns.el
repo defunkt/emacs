@@ -109,10 +109,13 @@ This emulates Vim's `dt` behavior, which rocks."
 (defun vendor (library)
   (let* ((file (symbol-name library))
          (normal (concat "~/.emacs.d/vendor/" file))
+         (lisp-normal (concat normal "lisp"))
          (suffix (concat normal ".el"))
          (defunkt (concat "~/.emacs.d/defunkt/" file)))
     (cond
-     ((file-directory-p normal) (add-to-list 'load-path normal) (require library))
+     ; needed for org-mode
+     ((file-directory-p lisp-normal) (add-to-list 'load-path lisp-normal) (require library))
+      ((file-directory-p normal) (add-to-list 'load-path normal) (require library))
      ((file-directory-p suffix) (add-to-list 'load-path suffix) (require library))
      ((file-exists-p suffix) (require library)))
     (when (file-exists-p (concat defunkt ".el"))

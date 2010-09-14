@@ -16,6 +16,8 @@
 (load "defunkt/github")
 (load "defunkt/git")
 (load "defunkt/todo")
+(load "defunkt/coffee")
+(load "defunkt/org-mode")
 
 (when (file-exists-p "defunkt/private")
   (load "defunkt/private"))
