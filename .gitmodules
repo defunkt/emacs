@@ -37,3 +37,6 @@
 [submodule "vendor/org-mode"]
 	path = vendor/org-mode
 	url = git://repo.or.cz/org-mode.git
+[submodule "vendor/coffee-mode"]
+	path = vendor/coffee-mode
+	url = git://github.com/defunkt/coffee-mode.git
