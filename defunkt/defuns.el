@@ -55,8 +55,8 @@ This emulates Vim's `dt` behavior, which rocks."
 (defun defunkt-ido-find-project ()
   (interactive)
   (find-file
-   (concat "~/Projects/" (ido-completing-read "Project: "
-                           (directory-files "~/Projects/" nil "^[^.]")))))
+   (concat "~/Code/" (ido-completing-read "Project: "
+                           (directory-files "~/Code/" nil "^[^.]")))))
 
 (defun defunkt-goto-config ()
   (interactive)

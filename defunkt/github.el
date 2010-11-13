@@ -1,6 +1,6 @@
 ;; github specific lovelies
 
-(defvar *github-root* "~/Projects/github")
+(defvar *github-root* "~/Code/github")
 
 (defun github-ido-find-file ()
   (interactive)
