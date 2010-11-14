@@ -1,4 +1,3 @@
-defunkt/custom.el
 url/*
 .DS_Store
 local.el
