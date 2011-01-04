@@ -1,4 +1,4 @@
-(setq tags-file-name ".TAGS")
+(setq tags-file-name "TAGS")
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 (setq mac-emulate-three-button-mouse nil)
