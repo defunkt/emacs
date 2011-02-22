@@ -25,5 +25,4 @@ Git = V do |command, dir|
   end
 end
 
-`git submodule update --init`
-`cd vendor/rinari && git submodule update --init`
+`git submodule update --init --recursive`
