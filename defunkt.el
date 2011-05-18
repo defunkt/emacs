@@ -28,7 +28,9 @@
 (vendor 'twittering-mode)
 (vendor 'textile-mode)
 (vendor 'yaml-mode)
-(vendor 'tpl-mode)
 (vendor 'open-file-in-github)
 (vendor 'ooc-mode)
 (vendor 'coffee-mode)
+(vendor 'lua-mode)
+
+(load "vendor/tpl-mode")
