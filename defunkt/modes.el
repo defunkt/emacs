@@ -11,6 +11,7 @@
 (load "defunkt/coffee")
 (load "defunkt/markdown")
 (load "defunkt/css")
+(load "defunkt/lua")
 
 ;; all modes
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
