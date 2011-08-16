@@ -1,6 +1,3 @@
-[submodule "rinari"]
-	path = vendor/rinari
-	url = git://github.com/eschulte/rinari.git
 [submodule "twilight-emacs"]
 	path = vendor/twilight-emacs
 	url = git://github.com/crafterm/twilight-emacs.git
