@@ -18,7 +18,7 @@
 
 (defun mustache ()
   (interactive)
-  (tpl-mode)
+  (mustache-mode)
   (setq truncate-lines t))
 
 (defun email ()

@@ -25,3 +25,6 @@
 [submodule "vendor/markdown-mode"]
 	path = vendor/markdown-mode
 	url = git://github.com/defunkt/markdown-mode.git
+[submodule "vendor/mustache-mode"]
+	path = vendor/mustache-mode
+	url = git://github.com/mustache/emacs

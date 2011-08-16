@@ -33,3 +33,4 @@
 (vendor 'coffee-mode)
 (vendor 'lua-mode)
 (vendor 'any-ini-mode)
+(vendor 'mustache-mode)

@@ -65,7 +65,7 @@
              (define-key c-mode-map "{" 'defunkt/c-electric-brace)))
 
 ;; mustache
-(add-to-list 'auto-mode-alist '("\\.mustache$" . tpl-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache$" . mustache-mode))
 
 ;; textmate.el
 (vendor 'textmate)
