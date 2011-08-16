@@ -1,1 +1,0 @@
-/Users/chris/Code/mustache/contrib/mustache-mode.el

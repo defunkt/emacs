@@ -33,5 +33,3 @@
 (vendor 'coffee-mode)
 (vendor 'lua-mode)
 (vendor 'any-ini-mode)
-
-(load "vendor/tpl-mode")
