@@ -12,7 +12,7 @@
 
 (defun js2-execute-buffer ()
   (interactive)
-  (shell-command (concat "johnson " (buffer-file-name))))
+  (shell-command (concat "node " (buffer-file-name))))
 
 (defun js2-execute-line ()
   (interactive)
