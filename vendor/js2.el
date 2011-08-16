@@ -1795,7 +1795,7 @@ The values are default faces to use for highlighting the keywords.")
 (defconst js2-reserved-words
   '(abstract
     boolean byte
-    char class
+    class
     double
     enum extends
     final float
