@@ -19,9 +19,6 @@
 [submodule "vendor/open-file-in-github"]
 	path = vendor/open-file-in-github
 	url = git://gist.github.com/170861.git
-[submodule "vendor/ooc-mode"]
-	path = vendor/ooc-mode
-	url = git://github.com/tatofoo/ooc-mode.git
 [submodule "vendor/markdown-mode"]
 	path = vendor/markdown-mode
 	url = git://github.com/defunkt/markdown-mode.git
