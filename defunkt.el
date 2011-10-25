@@ -34,3 +34,4 @@
 (vendor 'lua-mode)
 (vendor 'any-ini-mode)
 (vendor 'mustache-mode)
+(vendor 'scss-mode)

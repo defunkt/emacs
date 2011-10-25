@@ -25,3 +25,6 @@
 [submodule "vendor/mustache-mode"]
 	path = vendor/mustache-mode
 	url = git://github.com/mustache/emacs
+[submodule "vendor/scss-mode"]
+	path = vendor/scss-mode
+	url = https://github.com/antonj/scss-mode
